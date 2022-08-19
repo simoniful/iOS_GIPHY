@@ -12,13 +12,34 @@
 		BF634DD97BA9B7F60901795E /* Pods_GIPHY_GIPHYUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E53480C868129C7039F6B1 /* Pods_GIPHY_GIPHYUITests.framework */; };
 		F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670128ADE18D00094FA2 /* AppDelegate.swift */; };
 		F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670328ADE18D00094FA2 /* SceneDelegate.swift */; };
-		F465670628ADE18D00094FA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670528ADE18D00094FA2 /* ViewController.swift */; };
+		F465670628ADE18D00094FA2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670528ADE18D00094FA2 /* SearchViewController.swift */; };
 		F465670C28ADE18D00094FA2 /* GIPHY.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F465670A28ADE18D00094FA2 /* GIPHY.xcdatamodeld */; };
 		F465670E28ADE18E00094FA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F465670D28ADE18E00094FA2 /* Assets.xcassets */; };
 		F465671128ADE18E00094FA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F465670F28ADE18E00094FA2 /* LaunchScreen.storyboard */; };
 		F465671C28ADE18F00094FA2 /* GIPHYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465671B28ADE18F00094FA2 /* GIPHYTests.swift */; };
 		F465672628ADE18F00094FA2 /* GIPHYUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465672528ADE18F00094FA2 /* GIPHYUITests.swift */; };
 		F465672828ADE18F00094FA2 /* GIPHYUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465672728ADE18F00094FA2 /* GIPHYUITestsLaunchTests.swift */; };
+		F465673E28ADF0D200094FA2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465673D28ADF0D200094FA2 /* AppCoordinator.swift */; };
+		F465674128ADF12300094FA2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465674028ADF12300094FA2 /* Coordinator.swift */; };
+		F465674328ADF14000094FA2 /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465674228ADF14000094FA2 /* CoordinatorDelegate.swift */; };
+		F465674528ADF15100094FA2 /* CoordinatorStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465674428ADF15100094FA2 /* CoordinatorStyleCase.swift */; };
+		F465674928ADF61900094FA2 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465674828ADF61900094FA2 /* BaseView.swift */; };
+		F465674B28ADF62600094FA2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465674A28ADF62600094FA2 /* BaseViewController.swift */; };
+		F465674E28ADF75B00094FA2 /* ViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465674D28ADF75B00094FA2 /* ViewRepresentable.swift */; };
+		F465675128AE1F4800094FA2 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465675028AE1F4800094FA2 /* TabBarCoordinator.swift */; };
+		F465675328AE1FB700094FA2 /* TabBarPageCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465675228AE1FB700094FA2 /* TabBarPageCase.swift */; };
+		F465675728AE214000094FA2 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465675628AE214000094FA2 /* SearchCoordinator.swift */; };
+		F465675C28AE8CDD00094FA2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465675B28AE8CDD00094FA2 /* SearchView.swift */; };
+		F465675E28AE8EA100094FA2 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465675D28AE8EA100094FA2 /* SearchViewModel.swift */; };
+		F465676028AE8EC700094FA2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465675F28AE8EC700094FA2 /* ViewModel.swift */; };
+		F465676428AE8F5E00094FA2 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465676328AE8F5E00094FA2 /* SearchUseCase.swift */; };
+		F465676728AE8F9300094FA2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465676628AE8F9300094FA2 /* NetworkError.swift */; };
+		F465676A28AE902400094FA2 /* GIPHYRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465676928AE902400094FA2 /* GIPHYRepositoryInterface.swift */; };
+		F465676E28AE90FE00094FA2 /* GIPHYRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465676D28AE90FE00094FA2 /* GIPHYRepository.swift */; };
+		F465677128AE914400094FA2 /* GIFs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677028AE914400094FA2 /* GIFs.swift */; };
+		F465677328AE947800094FA2 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677228AE947800094FA2 /* EndPoint.swift */; };
+		F465677528AE949B00094FA2 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677428AE949B00094FA2 /* APIKey.swift */; };
+		F465677A28AF43CB00094FA2 /* GIFSearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +72,7 @@
 		F46566FE28ADE18D00094FA2 /* GIPHY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIPHY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F465670128ADE18D00094FA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F465670328ADE18D00094FA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F465670528ADE18D00094FA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F465670528ADE18D00094FA2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F465670B28ADE18D00094FA2 /* GIPHY.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GIPHY.xcdatamodel; sourceTree = "<group>"; };
 		F465670D28ADE18E00094FA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F465671028ADE18E00094FA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +82,27 @@
 		F465672128ADE18F00094FA2 /* GIPHYUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIPHYUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F465672528ADE18F00094FA2 /* GIPHYUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIPHYUITests.swift; sourceTree = "<group>"; };
 		F465672728ADE18F00094FA2 /* GIPHYUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIPHYUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F465673D28ADF0D200094FA2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		F465674028ADF12300094FA2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F465674228ADF14000094FA2 /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
+		F465674428ADF15100094FA2 /* CoordinatorStyleCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorStyleCase.swift; sourceTree = "<group>"; };
+		F465674828ADF61900094FA2 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F465674A28ADF62600094FA2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F465674D28ADF75B00094FA2 /* ViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresentable.swift; sourceTree = "<group>"; };
+		F465675028AE1F4800094FA2 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		F465675228AE1FB700094FA2 /* TabBarPageCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPageCase.swift; sourceTree = "<group>"; };
+		F465675628AE214000094FA2 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		F465675B28AE8CDD00094FA2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F465675D28AE8EA100094FA2 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		F465675F28AE8EC700094FA2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F465676328AE8F5E00094FA2 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		F465676628AE8F9300094FA2 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F465676928AE902400094FA2 /* GIPHYRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIPHYRepositoryInterface.swift; sourceTree = "<group>"; };
+		F465676D28AE90FE00094FA2 /* GIPHYRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIPHYRepository.swift; sourceTree = "<group>"; };
+		F465677028AE914400094FA2 /* GIFs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFs.swift; sourceTree = "<group>"; };
+		F465677228AE947800094FA2 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F465677428AE949B00094FA2 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchResponseDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +183,12 @@
 			children = (
 				F465673528ADE6DC00094FA2 /* Application */,
 				F465673628ADE6ED00094FA2 /* Presentation */,
+				F465676B28AE90BF00094FA2 /* Data */,
+				F465676128AE8F2600094FA2 /* Domain */,
+				F465676528AE8F8000094FA2 /* Network */,
+				F465673F28ADF0F300094FA2 /* Coordinator */,
 				F465673828ADE73600094FA2 /* Database */,
+				F465674628ADF56200094FA2 /* Util */,
 				F465673728ADE71000094FA2 /* Resources */,
 				F465671228ADE18E00094FA2 /* Info.plist */,
 			);
@@ -170,6 +217,7 @@
 			children = (
 				F465670128ADE18D00094FA2 /* AppDelegate.swift */,
 				F465670328ADE18D00094FA2 /* SceneDelegate.swift */,
+				F465673D28ADF0D200094FA2 /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -177,7 +225,10 @@
 		F465673628ADE6ED00094FA2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				F465670528ADE18D00094FA2 /* ViewController.swift */,
+				F465674F28AE1EFF00094FA2 /* Tab */,
+				F465675428AE20FC00094FA2 /* Serach */,
+				F465677628AE94FA00094FA2 /* Favorite */,
+				F465677728AE952500094FA2 /* Detail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -197,6 +248,178 @@
 				F465670A28ADE18D00094FA2 /* GIPHY.xcdatamodeld */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		F465673F28ADF0F300094FA2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F465674028ADF12300094FA2 /* Coordinator.swift */,
+				F465674228ADF14000094FA2 /* CoordinatorDelegate.swift */,
+				F465674428ADF15100094FA2 /* CoordinatorStyleCase.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F465674628ADF56200094FA2 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F465674C28ADF70500094FA2 /* Protocols */,
+				F465674728ADF57F00094FA2 /* Base */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		F465674728ADF57F00094FA2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F465674828ADF61900094FA2 /* BaseView.swift */,
+				F465674A28ADF62600094FA2 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F465674C28ADF70500094FA2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F465674D28ADF75B00094FA2 /* ViewRepresentable.swift */,
+				F465675F28AE8EC700094FA2 /* ViewModel.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F465674F28AE1EFF00094FA2 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				F465675028AE1F4800094FA2 /* TabBarCoordinator.swift */,
+				F465675228AE1FB700094FA2 /* TabBarPageCase.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		F465675428AE20FC00094FA2 /* Serach */ = {
+			isa = PBXGroup;
+			children = (
+				F465675528AE212200094FA2 /* Coordinator */,
+				F465675828AE21BA00094FA2 /* View */,
+				F465675A28AE21C700094FA2 /* ViewController */,
+				F465675928AE21BE00094FA2 /* ViewModel */,
+			);
+			path = Serach;
+			sourceTree = "<group>";
+		};
+		F465675528AE212200094FA2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F465675628AE214000094FA2 /* SearchCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F465675828AE21BA00094FA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F465675B28AE8CDD00094FA2 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F465675928AE21BE00094FA2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F465675D28AE8EA100094FA2 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F465675A28AE21C700094FA2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F465670528ADE18D00094FA2 /* SearchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F465676128AE8F2600094FA2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F465676F28AE912700094FA2 /* Entity */,
+				F465676828AE901400094FA2 /* Interface */,
+				F465676228AE8F5100094FA2 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F465676228AE8F5100094FA2 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				F465676328AE8F5E00094FA2 /* SearchUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		F465676528AE8F8000094FA2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F465677428AE949B00094FA2 /* APIKey.swift */,
+				F465677228AE947800094FA2 /* EndPoint.swift */,
+				F465676628AE8F9300094FA2 /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F465676828AE901400094FA2 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				F465676928AE902400094FA2 /* GIPHYRepositoryInterface.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		F465676B28AE90BF00094FA2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F465677828AF43A900094FA2 /* DataMapping */,
+				F465676C28AE90E700094FA2 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F465676C28AE90E700094FA2 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F465676D28AE90FE00094FA2 /* GIPHYRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F465676F28AE912700094FA2 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F465677028AE914400094FA2 /* GIFs.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F465677628AE94FA00094FA2 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		F465677728AE952500094FA2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		F465677828AF43A900094FA2 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */,
+			);
+			path = DataMapping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,10 +678,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F465670628ADE18D00094FA2 /* ViewController.swift in Sources */,
+				F465675328AE1FB700094FA2 /* TabBarPageCase.swift in Sources */,
+				F465670628ADE18D00094FA2 /* SearchViewController.swift in Sources */,
+				F465675E28AE8EA100094FA2 /* SearchViewModel.swift in Sources */,
 				F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */,
+				F465674328ADF14000094FA2 /* CoordinatorDelegate.swift in Sources */,
+				F465674128ADF12300094FA2 /* Coordinator.swift in Sources */,
+				F465676028AE8EC700094FA2 /* ViewModel.swift in Sources */,
+				F465673E28ADF0D200094FA2 /* AppCoordinator.swift in Sources */,
+				F465676728AE8F9300094FA2 /* NetworkError.swift in Sources */,
+				F465675728AE214000094FA2 /* SearchCoordinator.swift in Sources */,
+				F465677528AE949B00094FA2 /* APIKey.swift in Sources */,
+				F465677A28AF43CB00094FA2 /* GIFSearchResponseDTO.swift in Sources */,
+				F465674E28ADF75B00094FA2 /* ViewRepresentable.swift in Sources */,
+				F465676E28AE90FE00094FA2 /* GIPHYRepository.swift in Sources */,
+				F465674B28ADF62600094FA2 /* BaseViewController.swift in Sources */,
 				F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */,
+				F465677128AE914400094FA2 /* GIFs.swift in Sources */,
+				F465675C28AE8CDD00094FA2 /* SearchView.swift in Sources */,
+				F465674928ADF61900094FA2 /* BaseView.swift in Sources */,
+				F465674528ADF15100094FA2 /* CoordinatorStyleCase.swift in Sources */,
+				F465675128AE1F4800094FA2 /* TabBarCoordinator.swift in Sources */,
 				F465670C28ADE18D00094FA2 /* GIPHY.xcdatamodeld in Sources */,
+				F465677328AE947800094FA2 /* EndPoint.swift in Sources */,
+				F465676428AE8F5E00094FA2 /* SearchUseCase.swift in Sources */,
+				F465676A28AE902400094FA2 /* GIPHYRepositoryInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
