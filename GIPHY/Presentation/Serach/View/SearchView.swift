@@ -6,18 +6,41 @@
 //
 
 import Foundation
+import UIKit
+import SnapKit
 
 final class SearchView: BaseView {
-    // UISearchBar, CollectionView - Mansory
+    lazy var collectionView: UICollectionView = {
+        let layout = PinterestLayout()
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        collectionView.backgroundColor = .black
+        return collectionView
+    }()
+    
+    private lazy var noResultLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Datas Found"
+        label.font = .boldSystemFont(ofSize: 30)
+        label.textColor = .white
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func layoutSubviews() {
-        <#code#>
+        super.layoutSubviews()
+       
     }
     
     override func configure() {
-        <#code#>
+        
     }
     
     override func layout() {
-        <#code#>
+        
     }
+    
 }

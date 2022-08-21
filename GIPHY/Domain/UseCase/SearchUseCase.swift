@@ -9,23 +9,27 @@ import Foundation
 
 final class SearchUseCase {
 
-    let repository: NewsSearchManagerProtocol
+    let repository: GIPHYRepositoryInterface
 
-    init(repository: NewsSearchManagerProtocol) {
+    init(repository: GIPHYRepositoryInterface) {
         self.repository = repository
     }
 
-    func request(
-        from keyword: String,
-        display: Int,
+    func requestGIFs(
+        style: CategoryStatus,
+        query: String,
         start: Int,
-        completionHandler: @escaping (Result<NewsData, SearchError>) -> Void
-    ) {
-        repository.request(
-            from: keyword,
-            display: display,
-            start: start,
-            completionHandler: completionHandler
-        )
+        display: Int
+    ) async throws -> GIFs {
+        do {
+            return try await repository.requestGIFs(
+                style: style,
+                query: query,
+                start: start,
+                display: display
+            )
+        } catch {
+            throw error
+        }
     }
 }

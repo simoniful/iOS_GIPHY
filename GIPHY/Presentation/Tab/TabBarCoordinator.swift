@@ -66,16 +66,16 @@ final class TabBarCoordinator: Coordinator {
 
     private func connectTabCoordinator(of page: TabBarPageCase, to tabNavigationController: UINavigationController) {
         switch page {
-        case .search:
+        default:
             let searchCoordinator = SearchCoordinator(tabNavigationController)
             searchCoordinator.delegate = self
             self.childCoordinators.append(searchCoordinator)
             searchCoordinator.start()
-        case .favorite:
-            let favoriteCoordinator = FavoriteCoordinator(tabNavigationController)
-            favoriteCoordinator.delegate = self
-            self.childCoordinators.append(favoriteCoordinator)
-            favoriteCoordinator.start()
+//        case .favorite:
+//            let favoriteCoordinator = FavoriteCoordinator(tabNavigationController)
+//            favoriteCoordinator.delegate = self
+//            self.childCoordinators.append(favoriteCoordinator)
+//            favoriteCoordinator.start()
         }
     }
 }

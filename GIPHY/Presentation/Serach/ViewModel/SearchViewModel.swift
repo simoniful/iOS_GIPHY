@@ -30,18 +30,11 @@ final class SearchViewModel: NSObject, ViewModel {
     }
     
     struct Input {
-        let didSelectRowAt: Signal<GIFItem>
-        let rightBarButtonTapped: Signal<Void>
-        let refreshSignal: Signal<Void>
-        let prefetchRowsAt: Signal<[IndexPath]>
+
     }
     
     struct Output {
-        let newsList: Driver<[GIFItem]>
-        let showToastAction: Signal<String>
-        let reloadTable: Signal<Void>
-        let endRefreshing: Signal<Void>
-        let scrollToTop: Signal<Void>
+ 
     }
     
     func transform(input: Input) -> Output {

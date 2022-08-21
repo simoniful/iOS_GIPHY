@@ -40,6 +40,7 @@
 		F465677328AE947800094FA2 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677228AE947800094FA2 /* EndPoint.swift */; };
 		F465677528AE949B00094FA2 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677428AE949B00094FA2 /* APIKey.swift */; };
 		F465677A28AF43CB00094FA2 /* GIFSearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */; };
+		F465677C28B0C8C300094FA2 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677B28B0C8C300094FA2 /* PinterestLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		F465677228AE947800094FA2 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		F465677428AE949B00094FA2 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchResponseDTO.swift; sourceTree = "<group>"; };
+		F465677B28B0C8C300094FA2 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				F465675B28AE8CDD00094FA2 /* SearchView.swift */,
+				F465677B28B0C8C300094FA2 /* PinterestLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				F465674128ADF12300094FA2 /* Coordinator.swift in Sources */,
 				F465676028AE8EC700094FA2 /* ViewModel.swift in Sources */,
 				F465673E28ADF0D200094FA2 /* AppCoordinator.swift in Sources */,
+				F465677C28B0C8C300094FA2 /* PinterestLayout.swift in Sources */,
 				F465676728AE8F9300094FA2 /* NetworkError.swift in Sources */,
 				F465675728AE214000094FA2 /* SearchCoordinator.swift in Sources */,
 				F465677528AE949B00094FA2 /* APIKey.swift in Sources */,
