@@ -9,10 +9,21 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum CategoryStatus: Int {
+enum CategoryStatus: Int, CaseIterable {
     case gif
     case sticker
     case text
+    
+    var title: String {
+        switch self {
+        case .gif:
+            return "GIFs"
+        case .sticker:
+            return "Stickers"
+        case .text:
+            return "Text"
+        }
+    }
 }
 
 final class SearchViewModel: NSObject, ViewModel {
@@ -30,12 +41,19 @@ final class SearchViewModel: NSObject, ViewModel {
     }
     
     struct Input {
-
+        let search: Signal<String>
+        let refreshSignal: Signal<Void>
+        let prefetchRowsAt: Signal<[IndexPath]>
+        let didSelectRowAt: Signal<GIFItem>
     }
     
     struct Output {
- 
+        let gifs: Driver<[GIFItem]>
+
     }
+    
+    let gifs = BehaviorRelay<[GIFItem]>(value: [])
+    let search = BehaviorSubject(value: "")
     
     func transform(input: Input) -> Output {
         return Output()

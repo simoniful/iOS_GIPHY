@@ -37,28 +37,23 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Search"
-        searchController = UISearchController()
+        searchController = UISearchController(searchResultsController: nil)
         searchController.delegate = self
-        // searchController.searchResultsUpdater = self
+        searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.delegate = self
-        searchController.searchBar.scopeButtonTitles = [
-            "1",
-            "2",
-            "3",
-        ]
+        searchController.searchBar.scopeButtonTitles = CategoryStatus.allCases.map{ $0.title }
         searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.showsScopeBar = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
+        searchController.obscuresBackgroundDuringPresentation = false
     }
 }
 
 // MARK: - UISearchBarDelegate
-
 extension SearchViewController: UISearchBarDelegate {
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
@@ -68,32 +63,16 @@ extension SearchViewController: UISearchBarDelegate {
         print(selectedScope)
         // updateSearchResults(for: searchController)
     }
-    
 }
 
 // MARK: - UISearchControllerDelegate
-extension SearchViewController: UISearchControllerDelegate {
-    
-    func presentSearchController(_ searchController: UISearchController) {
-        //Swift.debugPrint("UISearchControllerDelegate invoked method: \(#function).")
+extension SearchViewController: UISearchControllerDelegate { }
+
+// MARK: - UISearchResultsUpdating
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
-    
-    func willPresentSearchController(_ searchController: UISearchController) {
-        //Swift.debugPrint("UISearchControllerDelegate invoked method: \(#function).")
-    }
-    
-    func didPresentSearchController(_ searchController: UISearchController) {
-        //Swift.debugPrint("UISearchControllerDelegate invoked method: \(#function).")
-    }
-    
-    func willDismissSearchController(_ searchController: UISearchController) {
-        //Swift.debugPrint("UISearchControllerDelegate invoked method: \(#function).")
-    }
-    
-    func didDismissSearchController(_ searchController: UISearchController) {
-        //Swift.debugPrint("UISearchControllerDelegate invoked method: \(#function).")
-    }
-    
 }
 
 

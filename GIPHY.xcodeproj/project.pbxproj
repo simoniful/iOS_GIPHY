@@ -265,6 +265,7 @@
 		F465674628ADF56200094FA2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				F465677D28B3843F00094FA2 /* Extensions */,
 				F465674C28ADF70500094FA2 /* Protocols */,
 				F465674728ADF57F00094FA2 /* Base */,
 			);
@@ -423,6 +424,13 @@
 				F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		F465677D28B3843F00094FA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
