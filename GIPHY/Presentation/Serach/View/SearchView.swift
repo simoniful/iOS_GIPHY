@@ -30,6 +30,11 @@ final class SearchView: BaseView {
         return label
     }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        return refreshControl
+    }()
+    
     override func layoutSubviews() {
         super.layoutSubviews()
        

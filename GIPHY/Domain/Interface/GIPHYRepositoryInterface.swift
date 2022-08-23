@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol GIPHYRepositoryInterface {
     func requestGIFs(
@@ -13,5 +15,5 @@ protocol GIPHYRepositoryInterface {
         query: String,
         start: Int,
         display: Int
-    ) async throws -> GIFs
+    ) -> Single<NetworkResult>
 }

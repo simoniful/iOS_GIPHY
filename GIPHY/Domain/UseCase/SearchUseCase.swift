@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 final class SearchUseCase {
 
@@ -20,16 +22,12 @@ final class SearchUseCase {
         query: String,
         start: Int,
         display: Int
-    ) async throws -> GIFs {
-        do {
-            return try await repository.requestGIFs(
-                style: style,
-                query: query,
-                start: start,
-                display: display
-            )
-        } catch {
-            throw error
-        }
+    ) -> Single<NetworkResult> {
+        return repository.requestGIFs(
+            style: style,
+            query: query,
+            start: start,
+            display: display
+        )
     }
 }

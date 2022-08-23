@@ -41,6 +41,7 @@
 		F465677528AE949B00094FA2 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677428AE949B00094FA2 /* APIKey.swift */; };
 		F465677A28AF43CB00094FA2 /* GIFSearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */; };
 		F465677C28B0C8C300094FA2 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677B28B0C8C300094FA2 /* PinterestLayout.swift */; };
+		F465677F28B4ADAA00094FA2 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465677E28B4ADAA00094FA2 /* NetworkResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		F465677428AE949B00094FA2 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		F465677928AF43CB00094FA2 /* GIFSearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchResponseDTO.swift; sourceTree = "<group>"; };
 		F465677B28B0C8C300094FA2 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
+		F465677E28B4ADAA00094FA2 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +369,7 @@
 				F465677428AE949B00094FA2 /* APIKey.swift */,
 				F465677228AE947800094FA2 /* EndPoint.swift */,
 				F465676628AE8F9300094FA2 /* NetworkError.swift */,
+				F465677E28B4ADAA00094FA2 /* NetworkResult.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				F465675328AE1FB700094FA2 /* TabBarPageCase.swift in Sources */,
 				F465670628ADE18D00094FA2 /* SearchViewController.swift in Sources */,
 				F465675E28AE8EA100094FA2 /* SearchViewModel.swift in Sources */,
+				F465677F28B4ADAA00094FA2 /* NetworkResult.swift in Sources */,
 				F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */,
 				F465674328ADF14000094FA2 /* CoordinatorDelegate.swift in Sources */,
 				F465674128ADF12300094FA2 /* Coordinator.swift in Sources */,

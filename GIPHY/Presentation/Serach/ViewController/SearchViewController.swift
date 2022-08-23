@@ -12,12 +12,17 @@ import SnapKit
 
 final class SearchViewController: UIViewController {
     private var disposeBag = DisposeBag()
-    private let searchView = SearchView()
-    private var viewModel: SearchViewModel
-    // private lazy var input
-    // private lazy var output
     
-    private var searchController: UISearchController!
+    private let searchView = SearchView()
+    private var searchController = UISearchController(searchResultsController: nil)
+    private var viewModel: SearchViewModel
+    
+    private lazy var input = SearchViewModel.Input(
+        refreshSignal: searchView.refreshControl.rx.controlEvent(.valueChanged).asSignal(),
+        prefetchRowsAt: searchView.collectionView.rx.prefetchItems.asSignal(),
+        didSelectRowAt: searchView.collectionView.rx.modelSelected(GIFItem.self).asSignal()
+    )
+    private lazy var output = viewModel.transform(input: input)
     
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
@@ -35,9 +40,14 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupNavigationBar()
+        bind()
+    }
+}
+
+private extension SearchViewController {
+    func setupNavigationBar() {
         navigationItem.title = "Search"
-        searchController = UISearchController(searchResultsController: nil)
         searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .none
@@ -45,10 +55,22 @@ final class SearchViewController: UIViewController {
         searchController.searchBar.scopeButtonTitles = CategoryStatus.allCases.map{ $0.title }
         searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.showsScopeBar = true
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
-        searchController.obscuresBackgroundDuringPresentation = false
+    }
+    
+    func bind() {
+        searchView.collectionView
+            .rx.setDelegate(self)
+            .disposed(by: disposeBag)
+     
+        output.gifs
+            .drive(onNext: { [weak self] a in
+                print(a)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -59,9 +81,16 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        
-        print(selectedScope)
-        // updateSearchResults(for: searchController)
+        switch selectedScope {
+        case 0:
+            viewModel.categoryStatus.onNext(CategoryStatus.gif)
+        case 1:
+            viewModel.categoryStatus.onNext(CategoryStatus.sticker)
+        case 2:
+            viewModel.categoryStatus.onNext(CategoryStatus.text)
+        default:
+            viewModel.categoryStatus.onNext(CategoryStatus.gif)
+        }
     }
 }
 
@@ -71,8 +100,12 @@ extension SearchViewController: UISearchControllerDelegate { }
 // MARK: - UISearchResultsUpdating
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        viewModel.searchKeyword.onNext(searchController.searchBar.text ?? "")
     }
+}
+
+extension SearchViewController: UICollectionViewDelegate {
+    
 }
 
 

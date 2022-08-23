@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SearchError: Int, Error {
+enum NetworkError: Int, Error {
     case badRequest = 400
     case forbidden = 403
     case notFoundData = 404
@@ -16,7 +16,7 @@ enum SearchError: Int, Error {
     case noNetwork = 500
 }
 
-extension SearchError {
+extension NetworkError {
     var errorDescription: String {
         switch self {
         case .badRequest: return "잘못된 요청입니다"
