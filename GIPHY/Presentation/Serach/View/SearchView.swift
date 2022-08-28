@@ -16,7 +16,9 @@ final class SearchView: BaseView {
             frame: .zero,
             collectionViewLayout: layout
         )
-        collectionView.backgroundColor = .black
+        collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: SearchViewCell.identifier)
+        // collectionView.backgroundColor = .black
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -41,11 +43,21 @@ final class SearchView: BaseView {
     }
     
     override func configure() {
-        
+        [collectionView, noResultLabel].forEach {
+            addSubview($0)
+        }
     }
     
     override func layout() {
+        collectionView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16.0)
+            $0.top.bottom.equalTo(safeAreaLayoutGuide)
+        }
         
+        noResultLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
     }
     
 }

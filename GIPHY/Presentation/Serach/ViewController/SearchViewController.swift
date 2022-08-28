@@ -65,10 +65,24 @@ private extension SearchViewController {
         searchView.collectionView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
-     
+        
+        if let layout = searchView.collectionView.collectionViewLayout as? PinterestLayout {
+          layout.delegate = self
+        }
+        
         output.gifs
-            .drive(onNext: { [weak self] a in
-                print(a)
+            .drive(searchView.collectionView.rx.items) { collectionView, index, element in
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchViewCell.identifier, for: IndexPath(item: index, section: index)) as? SearchViewCell else { return UICollectionViewCell()
+                }
+                
+                cell.setup(gifItem: element)
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
+        output.endRefreshing
+            .emit(onNext: { [weak self] _ in
+                self?.searchView.refreshControl.endRefreshing()
             })
             .disposed(by: disposeBag)
     }
@@ -107,6 +121,28 @@ extension SearchViewController: UISearchResultsUpdating {
 extension SearchViewController: UICollectionViewDelegate {
     
 }
+
+extension SearchViewController: PinterestLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, RatioForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+        var computedRatio: CGFloat = 0
+        
+        self.output.gifs
+            .drive { gifs in
+                if !gifs.isEmpty {
+                    let width = (gifs[indexPath.item].images.preview.width as NSString).floatValue
+                    
+                    let height = (gifs[indexPath.item].images.preview.height as NSString).floatValue
+                    
+                    computedRatio = CGFloat(height / width)
+                }
+            }
+            .disposed(by: self.disposeBag)
+        
+        return computedRatio
+    }
+}
+
+
 
 
 
