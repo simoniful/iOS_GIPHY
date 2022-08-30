@@ -18,6 +18,12 @@ final class SearchViewCell: UICollectionViewCell, ViewRepresentable {
         return view
     }()
     
+    let idLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -28,11 +34,12 @@ final class SearchViewCell: UICollectionViewCell, ViewRepresentable {
         super.init(coder: coder)
     }
     
-    func setup(gifItem: GIFItem) {
+    func setup(gifItem: GIFItem, indexPath: Int) {
         cellView.indicatorAction(bool: true)
         DispatchQueue.global().async { [weak self] in
             let image = UIImage.gifImageWithURL(gifItem.images.preview.url)
             DispatchQueue.main.async {
+                self?.idLabel.text = "\(indexPath)"
                 self?.cellView.imageView.image = image
                 self?.cellView.indicatorAction(bool: false)
             }
@@ -41,11 +48,16 @@ final class SearchViewCell: UICollectionViewCell, ViewRepresentable {
 
     func configure() {
         contentView.addSubview(cellView)
+        contentView.addSubview(idLabel)
     }
     
     func layout() {
         cellView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        idLabel.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
         }
     }
 }

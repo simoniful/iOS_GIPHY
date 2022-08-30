@@ -19,7 +19,7 @@ final class SearchViewController: UIViewController {
     
     private lazy var input = SearchViewModel.Input(
         refreshSignal: searchView.refreshControl.rx.controlEvent(.valueChanged).asSignal(),
-        prefetchRowsAt: searchView.collectionView.rx.prefetchItems.asSignal(),
+        prefetchItemsAt: searchView.collectionView.rx.prefetchItems.asSignal(),
         didSelectRowAt: searchView.collectionView.rx.modelSelected(GIFItem.self).asSignal()
     )
     private lazy var output = viewModel.transform(input: input)
@@ -66,16 +66,16 @@ private extension SearchViewController {
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        if let layout = searchView.collectionView.collectionViewLayout as? PinterestLayout {
-          layout.delegate = self
-        }
-        
+//        guard let layout = searchView.collectionView.collectionViewLayout as? PinterestLayout else {
+//            return
+//        }
+//        layout.delegate = self
+//        
         output.gifs
             .drive(searchView.collectionView.rx.items) { collectionView, index, element in
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchViewCell.identifier, for: IndexPath(item: index, section: index)) as? SearchViewCell else { return UICollectionViewCell()
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchViewCell.identifier, for: IndexPath(item: index, section: 0)) as? SearchViewCell else { return UICollectionViewCell()
                 }
-                
-                cell.setup(gifItem: element)
+                cell.setup(gifItem: element, indexPath: index)
                 return cell
             }
             .disposed(by: disposeBag)
@@ -83,6 +83,12 @@ private extension SearchViewController {
         output.endRefreshing
             .emit(onNext: { [weak self] _ in
                 self?.searchView.refreshControl.endRefreshing()
+            })
+            .disposed(by: disposeBag)
+        
+        output.reloadCollection
+            .emit(onNext: { [weak self] _ in
+                self?.searchView.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -115,32 +121,44 @@ extension SearchViewController: UISearchControllerDelegate { }
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         viewModel.searchKeyword.onNext(searchController.searchBar.text ?? "")
+//        guard let layout = searchView.collectionView.collectionViewLayout as? PinterestLayout else {
+//            return
+//        }
+//        layout.invalidateLayout()
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate {
-    
-}
+extension SearchViewController: UICollectionViewDelegate { }
 
-extension SearchViewController: PinterestLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView, RatioForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        var computedRatio: CGFloat = 0
-        
-        self.output.gifs
-            .drive { gifs in
-                if !gifs.isEmpty {
-                    let width = (gifs[indexPath.item].images.preview.width as NSString).floatValue
-                    
-                    let height = (gifs[indexPath.item].images.preview.height as NSString).floatValue
-                    
-                    computedRatio = CGFloat(height / width)
-                }
-            }
-            .disposed(by: self.disposeBag)
-        
-        return computedRatio
-    }
-}
+//extension SearchViewController: PinterestLayoutDelegate {
+//    func numberOfItemsInCollectionView() -> Int {
+//        var count: Int = 0
+//
+//        output.gifs
+//            .drive { gifs in
+//                count = gifs.count
+//            }
+//            .disposed(by: disposeBag)
+//
+//        return count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, RatioForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+//        var computedRatio: CGFloat = 0
+//
+//        output.gifs
+//            .drive { gifs in
+//                if !gifs.isEmpty {
+//                    let width = (gifs[indexPath.item].images.preview.width as NSString).floatValue
+//                    let height = (gifs[indexPath.item].images.preview.height as NSString).floatValue
+//                    computedRatio = CGFloat(height / width)
+//                }
+//            }
+//            .disposed(by: self.disposeBag)
+//
+//        return computedRatio
+//    }
+//}
 
 
 

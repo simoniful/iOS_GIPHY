@@ -11,14 +11,19 @@ import SnapKit
 
 final class SearchView: BaseView {
     lazy var collectionView: UICollectionView = {
-        let layout = PinterestLayout()
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2 - 26.0, height: UIScreen.main.bounds.width / 3 - 24.0)
+        layout.minimumLineSpacing = 16.0
+        layout.minimumInteritemSpacing = 16.0
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
+        layout.scrollDirection = .vertical
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout
         )
         collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: SearchViewCell.identifier)
-        // collectionView.backgroundColor = .black
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.refreshControl = refreshControl
         return collectionView
     }()
     

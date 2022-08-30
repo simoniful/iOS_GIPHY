@@ -47,13 +47,13 @@ final class SearchViewModel: NSObject, ViewModel {
     
     struct Input {
         let refreshSignal: Signal<Void>
-        let prefetchRowsAt: Signal<[IndexPath]>
+        let prefetchItemsAt: Signal<[IndexPath]>
         let didSelectRowAt: Signal<GIFItem>
     }
     
     struct Output {
         let gifs: Driver<[GIFItem]>
-        let reloadTable: Signal<Void>
+        let reloadCollection: Signal<Void>
         let endRefreshing: Signal<Void>
         let showToastAction: Signal<String>
         let scrollToTop: Signal<Void>
@@ -64,53 +64,98 @@ final class SearchViewModel: NSObject, ViewModel {
     let categoryStatus = BehaviorSubject(value: CategoryStatus.gif)
     
     let showToastAction = PublishRelay<String>()
-    let reloadTable = PublishRelay<Void>()
+    let reloadCollection = PublishRelay<Void>()
     let endRefreshing = PublishRelay<Void>()
     let scrollToTop = PublishRelay<Void>()
     
     func transform(input: Input) -> Output {
         Observable.combineLatest(
             searchKeyword.asObservable()
-                .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+                .throttle(.seconds(1), scheduler: MainScheduler.instance)
                 .distinctUntilChanged(),
             categoryStatus
         )
         .subscribe(onNext: {[weak self] (query, style) in
             guard let self = self else { return }
-            self.searchUseCase.requestGIFs(
+            self.requestGifs(
                 style: style,
                 query: query,
-                start: self.currentPage,
-                display: self.display
+                isNeededToReset: true
             )
-            .subscribe(
-                onSuccess: {[weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let gifs):
-                        self.gifs.accept(gifs.item)
-                    case .error(let error):
-                        self.showToastAction.accept(error.errorDescription)
-                        self.gifs.accept([])
-                    }
-                },
-                onFailure: {[weak self] error in
-                    guard let self = self else { return }
-                    self.showToastAction.accept(error.localizedDescription)
-                    self.gifs.accept([])
-                }
-            )
-            .disposed(by: self.disposeBag)
         })
         .disposed(by: disposeBag)
         
+        input.prefetchItemsAt
+            .emit(onNext: { [weak self] indexPaths in
+                guard let self = self else { return }
+                for indexPath in indexPaths {
+                    let limitIndex = self.gifs.value.count - 1
+                    if indexPath.item == limitIndex && self.gifs.value.count < self.totalCount {
+                        self.requestGifs(
+                            style: try! self.categoryStatus.value(),
+                            query: try! self.searchKeyword.value(),
+                            isNeededToReset: false
+                        )
+                    }
+                }
+
+            })
+            .disposed(by: disposeBag)
+        
         return Output(
             gifs: gifs.asDriver(),
-            reloadTable: reloadTable.asSignal(),
+            reloadCollection: reloadCollection.asSignal(),
             endRefreshing: endRefreshing.asSignal(),
             showToastAction: showToastAction.asSignal(),
             scrollToTop: scrollToTop.asSignal()
         )
+    }
+}
+
+private extension SearchViewModel {
+    func requestGifs(
+        style: CategoryStatus,
+        query: String,
+        isNeededToReset: Bool
+    ) {
+        if isNeededToReset {
+            currentPage = 0
+            totalCount = 0
+            gifs.accept([])
+        }
+        searchUseCase.requestGIFs(
+            style: style,
+            query: query,
+            start: (self.currentPage * self.display) + 1,
+            display: self.display
+        )
+        .subscribe(
+            onSuccess: {[weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let gifs):
+                    let newValue = gifs.item
+                    let oldValue = self.gifs.value
+                    self.gifs.accept(oldValue + newValue)
+                    self.currentPage += 1
+                    self.totalCount = gifs.pagination.total
+                    self.endRefreshing.accept(())
+                    if isNeededToReset {
+                        self.scrollToTop.accept(())
+                        self.reloadCollection.accept(())
+                    }
+                case .error(let error):
+                    self.showToastAction.accept(error.errorDescription)
+                    self.gifs.accept([])
+                }
+            },
+            onFailure: {[weak self] error in
+                guard let self = self else { return }
+                self.showToastAction.accept(error.localizedDescription)
+                self.gifs.accept([])
+            }
+        )
+        .disposed(by: self.disposeBag)
     }
 }
 

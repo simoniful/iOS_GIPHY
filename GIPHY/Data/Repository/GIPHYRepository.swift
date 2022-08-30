@@ -46,7 +46,7 @@ final class GIPHYRepository: GIPHYRepositoryInterface {
                             single(.failure(error))
                         }
                         
-                    case let .failure(error):
+                    case .failure(_):
                         if let statusCode = response.response?.statusCode {
                             if let networkError = NetworkError(rawValue: statusCode){
                                 single(.success(.error(networkError)))

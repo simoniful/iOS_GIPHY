@@ -14,6 +14,7 @@ final class ContentGIFView: BaseView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
     let indicatorView: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
         indicatorView.hidesWhenStopped = true
