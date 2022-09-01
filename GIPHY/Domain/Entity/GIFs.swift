@@ -12,7 +12,7 @@ struct GIFs {
     let pagination: Pagination
 }
 
-struct GIFItem {
+struct GIFItem: Equatable {
     let type: String
     let id: String
     let webPageURL: String
@@ -20,6 +20,10 @@ struct GIFItem {
     let images: GIFCategory
     let user: UserData
     let isFavorite: Bool
+    
+    static func == (lhs: GIFItem, rhs: GIFItem) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 struct GIFCategory {
@@ -43,4 +47,16 @@ struct Pagination {
     let total: Int
     let count: Int
     let start: Int
+}
+
+extension GIFItem {
+    init(favoritedGIFItem: FavoritedGIFItem) {
+        self.type = favoritedGIFItem.
+        self.id = favoritedGIFItem.id
+        self.webPageURL = favoritedGIFItem.originalURL
+        self.title
+        self.images
+        self.user
+        self.isFavorite
+    }
 }

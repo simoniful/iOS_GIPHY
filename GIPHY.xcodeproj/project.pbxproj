@@ -13,7 +13,7 @@
 		F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670128ADE18D00094FA2 /* AppDelegate.swift */; };
 		F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670328ADE18D00094FA2 /* SceneDelegate.swift */; };
 		F465670628ADE18D00094FA2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670528ADE18D00094FA2 /* SearchViewController.swift */; };
-		F465670C28ADE18D00094FA2 /* GIPHY.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F465670A28ADE18D00094FA2 /* GIPHY.xcdatamodeld */; };
+		F465670C28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F465670A28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld */; };
 		F465670E28ADE18E00094FA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F465670D28ADE18E00094FA2 /* Assets.xcassets */; };
 		F465671128ADE18E00094FA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F465670F28ADE18E00094FA2 /* LaunchScreen.storyboard */; };
 		F465671C28ADE18F00094FA2 /* GIPHYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465671B28ADE18F00094FA2 /* GIPHYTests.swift */; };
@@ -46,6 +46,13 @@
 		F465678328B91B6A00094FA2 /* ContentGIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465678228B91B6A00094FA2 /* ContentGIFView.swift */; };
 		F465678528BB29BD00094FA2 /* UIImage +.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465678428BB29BC00094FA2 /* UIImage +.swift */; };
 		F465678828BB29FB00094FA2 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465678728BB29FB00094FA2 /* ImageCacheManager.swift */; };
+		F465679228BF230F00094FA2 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679128BF230E00094FA2 /* FavoriteCoordinator.swift */; };
+		F465679428BF233E00094FA2 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679328BF233E00094FA2 /* FavoriteViewController.swift */; };
+		F465679628BF235200094FA2 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679528BF235200094FA2 /* FavoriteView.swift */; };
+		F465679828BF248B00094FA2 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679728BF248B00094FA2 /* FavoriteViewModel.swift */; };
+		F465679A28BF2CB600094FA2 /* DatabaseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679928BF2CB600094FA2 /* DatabaseUseCase.swift */; };
+		F465679C28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679B28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift */; };
+		F465679E28BF2D2C00094FA2 /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679D28BF2D2C00094FA2 /* DatabaseRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +122,13 @@
 		F465678228B91B6A00094FA2 /* ContentGIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentGIFView.swift; sourceTree = "<group>"; };
 		F465678428BB29BC00094FA2 /* UIImage +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage +.swift"; sourceTree = "<group>"; };
 		F465678728BB29FB00094FA2 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		F465679128BF230E00094FA2 /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
+		F465679328BF233E00094FA2 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		F465679528BF235200094FA2 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		F465679728BF248B00094FA2 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		F465679928BF2CB600094FA2 /* DatabaseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUseCase.swift; sourceTree = "<group>"; };
+		F465679B28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepositoryInterface.swift; sourceTree = "<group>"; };
+		F465679D28BF2D2C00094FA2 /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,7 +271,6 @@
 		F465673828ADE73600094FA2 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				F465670A28ADE18D00094FA2 /* GIPHY.xcdatamodeld */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -370,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				F465676328AE8F5E00094FA2 /* SearchUseCase.swift */,
+				F465679928BF2CB600094FA2 /* DatabaseUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -389,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				F465676928AE902400094FA2 /* GIPHYRepositoryInterface.swift */,
+				F465679B28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -406,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				F465676D28AE90FE00094FA2 /* GIPHYRepository.swift */,
+				F465679D28BF2D2C00094FA2 /* DatabaseRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -414,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				F465677028AE914400094FA2 /* GIFs.swift */,
+				F465670A28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -421,6 +438,10 @@
 		F465677628AE94FA00094FA2 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				F465678A28BF222E00094FA2 /* Coordinator */,
+				F465678928BF222400094FA2 /* View */,
+				F465678B28BF223A00094FA2 /* ViewController */,
+				F465678C28BF225100094FA2 /* ViewModel */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -428,6 +449,9 @@
 		F465677728AE952500094FA2 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				F465678F28BF227F00094FA2 /* View */,
+				F465678E28BF227900094FA2 /* ViewController */,
+				F465678D28BF227300094FA2 /* ViewModel */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -454,6 +478,59 @@
 				F465678728BB29FB00094FA2 /* ImageCacheManager.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		F465678928BF222400094FA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F465679528BF235200094FA2 /* FavoriteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F465678A28BF222E00094FA2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F465679128BF230E00094FA2 /* FavoriteCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F465678B28BF223A00094FA2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F465679328BF233E00094FA2 /* FavoriteViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F465678C28BF225100094FA2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F465679728BF248B00094FA2 /* FavoriteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F465678D28BF227300094FA2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F465678E28BF227900094FA2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F465678F28BF227F00094FA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -723,23 +800,30 @@
 				F465676028AE8EC700094FA2 /* ViewModel.swift in Sources */,
 				F465678128B6693100094FA2 /* SearchViewCell.swift in Sources */,
 				F465673E28ADF0D200094FA2 /* AppCoordinator.swift in Sources */,
+				F465679C28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift in Sources */,
 				F465677C28B0C8C300094FA2 /* PinterestLayout.swift in Sources */,
 				F465676728AE8F9300094FA2 /* NetworkError.swift in Sources */,
+				F465679828BF248B00094FA2 /* FavoriteViewModel.swift in Sources */,
 				F465678328B91B6A00094FA2 /* ContentGIFView.swift in Sources */,
 				F465675728AE214000094FA2 /* SearchCoordinator.swift in Sources */,
 				F465678528BB29BD00094FA2 /* UIImage +.swift in Sources */,
 				F465677528AE949B00094FA2 /* APIKey.swift in Sources */,
 				F465677A28AF43CB00094FA2 /* GIFSearchResponseDTO.swift in Sources */,
+				F465679628BF235200094FA2 /* FavoriteView.swift in Sources */,
 				F465674E28ADF75B00094FA2 /* ViewRepresentable.swift in Sources */,
 				F465676E28AE90FE00094FA2 /* GIPHYRepository.swift in Sources */,
 				F465674B28ADF62600094FA2 /* BaseViewController.swift in Sources */,
 				F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */,
+				F465679428BF233E00094FA2 /* FavoriteViewController.swift in Sources */,
 				F465677128AE914400094FA2 /* GIFs.swift in Sources */,
 				F465675C28AE8CDD00094FA2 /* SearchView.swift in Sources */,
+				F465679228BF230F00094FA2 /* FavoriteCoordinator.swift in Sources */,
 				F465674928ADF61900094FA2 /* BaseView.swift in Sources */,
 				F465674528ADF15100094FA2 /* CoordinatorStyleCase.swift in Sources */,
+				F465679A28BF2CB600094FA2 /* DatabaseUseCase.swift in Sources */,
+				F465679E28BF2D2C00094FA2 /* DatabaseRepository.swift in Sources */,
 				F465675128AE1F4800094FA2 /* TabBarCoordinator.swift in Sources */,
-				F465670C28ADE18D00094FA2 /* GIPHY.xcdatamodeld in Sources */,
+				F465670C28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld in Sources */,
 				F465677328AE947800094FA2 /* EndPoint.swift in Sources */,
 				F465676428AE8F5E00094FA2 /* SearchUseCase.swift in Sources */,
 				F465676A28AE902400094FA2 /* GIPHYRepositoryInterface.swift in Sources */,
@@ -1084,13 +1168,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F465670A28ADE18D00094FA2 /* GIPHY.xcdatamodeld */ = {
+		F465670A28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				F465670B28ADE18D00094FA2 /* GIPHY.xcdatamodel */,
 			);
 			currentVersion = F465670B28ADE18D00094FA2 /* GIPHY.xcdatamodel */;
-			path = GIPHY.xcdatamodeld;
+			path = FavoritedGIFData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

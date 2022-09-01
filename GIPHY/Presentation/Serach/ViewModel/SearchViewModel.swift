@@ -71,7 +71,8 @@ final class SearchViewModel: NSObject, ViewModel {
     func transform(input: Input) -> Output {
         Observable.combineLatest(
             searchKeyword.asObservable()
-                .throttle(.seconds(1), scheduler: MainScheduler.instance)
+                .filter { $0.count >= 3 }
+                .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
                 .distinctUntilChanged(),
             categoryStatus
         )

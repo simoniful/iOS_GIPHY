@@ -12,6 +12,7 @@ import RxCocoa
 
 protocol PinterestLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, RatioForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat
+    
     func numberOfItemsInCollectionView() -> Int
 }
 
