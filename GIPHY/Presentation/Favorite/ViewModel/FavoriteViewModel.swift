@@ -26,18 +26,25 @@ final class FavoriteViewModel: NSObject, ViewModel {
     }
     
     struct Input {
-        let didSelectRowAt: Signal<FavoritedGIFItem>
-        let deleteForRowAt: Signal<IndexPath>
-        let viewWillAppear: Signal<Void>
+        let didSelectRowAt: Signal<GIFItem_CoreData>
     }
     
     struct Output {
-        let favoritedGifs: Driver<[FavoritedGIFItem]>
+        let favoritedGifs: Driver<[GIFItem_CoreData]>
     }
     
-    private let favoritedGifs = BehaviorRelay<[FavoritedGIFItem]>(value: [])
+    private let favoritedGifs = BehaviorRelay<[GIFItem_CoreData]>(value: [])
     
     func transform(input: Input) -> Output {
+        
+        
         return Output(favoritedGifs: favoritedGifs.asDriver())
+    }
+}
+
+private extension FavoriteViewModel {
+    func requestGIFItems() {
+        let fetchedData = dataBaseUseCase.fetchData(request: GIFItem_CoreData.fetchRequest())
+        favoritedGifs.accept(fetchedData)
     }
 }

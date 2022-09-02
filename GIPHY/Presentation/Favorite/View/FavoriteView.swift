@@ -16,7 +16,7 @@ final class FavoriteView: BaseView {
             frame: .zero,
             collectionViewLayout: layout
         )
-        collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: SearchViewCell.identifier)
+        collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: FavoriteCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()

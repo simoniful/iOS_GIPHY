@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GIFCategory_CoreData" representedClassName="GIFCategory_CoreData" syncable="YES">
+        <relationship name="gifItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFItem_CoreData" inverseName="images" inverseEntity="GIFItem_CoreData"/>
+        <relationship name="original" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFSize_CoreData" inverseName="original" inverseEntity="GIFSize_CoreData"/>
+        <relationship name="preview" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFSize_CoreData" inverseName="preview" inverseEntity="GIFSize_CoreData"/>
+    </entity>
+    <entity name="GIFItem_CoreData" representedClassName="GIFItem_CoreData" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="webPageURL" optional="YES" attributeType="String"/>
+        <relationship name="images" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFCategory_CoreData" inverseName="gifItem" inverseEntity="GIFCategory_CoreData"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData_CoreData" inverseName="gifItem" inverseEntity="UserData_CoreData"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="GIFSize_CoreData" representedClassName="GIFSize_CoreData" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="String"/>
+        <attribute name="size" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="width" optional="YES" attributeType="String"/>
+        <relationship name="original" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFCategory_CoreData" inverseName="original" inverseEntity="GIFCategory_CoreData"/>
+        <relationship name="preview" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFCategory_CoreData" inverseName="preview" inverseEntity="GIFCategory_CoreData"/>
+    </entity>
+    <entity name="UserData_CoreData" representedClassName="UserData_CoreData" syncable="YES">
+        <attribute name="avatarURL" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="gifItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFItem_CoreData" inverseName="user" inverseEntity="GIFItem_CoreData"/>
+    </entity>
+    <elements>
+        <element name="GIFItem_CoreData" positionX="-145.859375" positionY="-153.94921875" width="128" height="28"/>
+        <element name="UserData_CoreData" positionX="-117" positionY="-63" width="128" height="14"/>
+        <element name="GIFSize_CoreData" positionX="-108" positionY="-54" width="128" height="14"/>
+        <element name="GIFCategory_CoreData" positionX="-99" positionY="-45" width="128" height="14"/>
+    </elements>
+</model>

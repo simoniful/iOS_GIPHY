@@ -12,7 +12,7 @@ final class DatabaseRepository: DatabaseRepositoryInterface {
     static let shared: DatabaseRepository = DatabaseRepository()
 
     lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "FavoritedGIFData")
+        let container = NSPersistentContainer(name: "GIFCategory_CoreData")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -36,25 +36,28 @@ final class DatabaseRepository: DatabaseRepositoryInterface {
     }
 
     @discardableResult func saveGIFItem(item: GIFItem) -> Bool {
-        let entity = NSEntityDescription.entity(forEntityName: "FavoritedGIFItem", in: self.context)
-        if let entity = entity {
-            let managedObject = NSManagedObject(entity: entity, insertInto: self.context)
-
-            managedObject.setValue(true, forKey: "isFavorite")
-            managedObject.setValue(item.user.name, forKey: "username")
-            managedObject.setValue(item.user.avatarURL, forKey: "avatarURL")
-            managedObject.setValue(item.id, forKey: "id")
-            managedObject.setValue(item.images.original.url, forKey: "originalURL")
-            managedObject.setValue(item.images.original.height, forKey: "originalHeight")
-            managedObject.setValue(item.images.preview.url, forKey: "previewURL")
+        do {
+            let data = try JSONEncoder().encode(item)
+            print( String(data: data, encoding: .utf8)! )
+            let decoder = JSONDecoder()
+            decoder.userInfo[CodingUserInfoKey.context!] = self.container.viewContext
+            let itemData = try decoder.decode(GIFItem_CoreData.self, from: data)
+            print("Received \(itemData) new commits.")
             
-            do {
-                try self.context.save()
-                return true
-            } catch {
+            if container.viewContext.hasChanges {
+                do {
+                    print ("Saved")
+                    try container.viewContext.save()
+                    return true
+                } catch {
+                    print("An error occurred while saving: \(error)")
+                    return false
+                }
+            } else {
                 return false
             }
-        } else {
+        } catch {
+            print(error)
             return false
         }
     }

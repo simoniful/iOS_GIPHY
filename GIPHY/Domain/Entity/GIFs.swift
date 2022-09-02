@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import CoreData
 
 struct GIFs {
     let item: [GIFItem]
     let pagination: Pagination
 }
 
-struct GIFItem: Equatable {
+struct GIFItem: Codable, Equatable {
     let type: String
     let id: String
     let webPageURL: String
@@ -20,43 +21,31 @@ struct GIFItem: Equatable {
     let images: GIFCategory
     let user: UserData
     let isFavorite: Bool
-    
+
     static func == (lhs: GIFItem, rhs: GIFItem) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
-struct GIFCategory {
+struct GIFCategory: Codable {
     let original: GIFSize
     let preview: GIFSize
 }
 
-struct GIFSize {
+struct GIFSize: Codable {
     let height: String
     let width: String
     let size: String
     let url: String
 }
 
-struct UserData {
+struct UserData: Codable {
     let avatarURL: String
     let name: String
 }
 
-struct Pagination {
+struct Pagination: Codable {
     let total: Int
     let count: Int
     let start: Int
-}
-
-extension GIFItem {
-    init(favoritedGIFItem: FavoritedGIFItem) {
-        self.type = favoritedGIFItem.
-        self.id = favoritedGIFItem.id
-        self.webPageURL = favoritedGIFItem.originalURL
-        self.title
-        self.images
-        self.user
-        self.isFavorite
-    }
 }

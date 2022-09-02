@@ -13,7 +13,7 @@
 		F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670128ADE18D00094FA2 /* AppDelegate.swift */; };
 		F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670328ADE18D00094FA2 /* SceneDelegate.swift */; };
 		F465670628ADE18D00094FA2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670528ADE18D00094FA2 /* SearchViewController.swift */; };
-		F465670C28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F465670A28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld */; };
+		F465670C28ADE18D00094FA2 /* GIPHYData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F465670A28ADE18D00094FA2 /* GIPHYData.xcdatamodeld */; };
 		F465670E28ADE18E00094FA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F465670D28ADE18E00094FA2 /* Assets.xcassets */; };
 		F465671128ADE18E00094FA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F465670F28ADE18E00094FA2 /* LaunchScreen.storyboard */; };
 		F465671C28ADE18F00094FA2 /* GIPHYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465671B28ADE18F00094FA2 /* GIPHYTests.swift */; };
@@ -53,6 +53,16 @@
 		F465679A28BF2CB600094FA2 /* DatabaseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679928BF2CB600094FA2 /* DatabaseUseCase.swift */; };
 		F465679C28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679B28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift */; };
 		F465679E28BF2D2C00094FA2 /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465679D28BF2D2C00094FA2 /* DatabaseRepository.swift */; };
+		F4BCFBDF28C1AD1C00754D33 /* CodingUserInfoKey +.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFBDE28C1AD1C00754D33 /* CodingUserInfoKey +.swift */; };
+		F4BCFC3E28C1E37700754D33 /* GIFItem_CoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3628C1E37700754D33 /* GIFItem_CoreData+CoreDataClass.swift */; };
+		F4BCFC3F28C1E37700754D33 /* GIFItem_CoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3728C1E37700754D33 /* GIFItem_CoreData+CoreDataProperties.swift */; };
+		F4BCFC4028C1E37700754D33 /* UserData_CoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3828C1E37700754D33 /* UserData_CoreData+CoreDataClass.swift */; };
+		F4BCFC4128C1E37700754D33 /* UserData_CoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3928C1E37700754D33 /* UserData_CoreData+CoreDataProperties.swift */; };
+		F4BCFC4228C1E37700754D33 /* GIFSize_CoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3A28C1E37700754D33 /* GIFSize_CoreData+CoreDataClass.swift */; };
+		F4BCFC4328C1E37700754D33 /* GIFSize_CoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3B28C1E37700754D33 /* GIFSize_CoreData+CoreDataProperties.swift */; };
+		F4BCFC4428C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3C28C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift */; };
+		F4BCFC4528C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3D28C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift */; };
+		F4BCFC4728C1F12400754D33 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4628C1F12400754D33 /* FavoriteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +139,16 @@
 		F465679928BF2CB600094FA2 /* DatabaseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUseCase.swift; sourceTree = "<group>"; };
 		F465679B28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepositoryInterface.swift; sourceTree = "<group>"; };
 		F465679D28BF2D2C00094FA2 /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
+		F4BCFBDE28C1AD1C00754D33 /* CodingUserInfoKey +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey +.swift"; sourceTree = "<group>"; };
+		F4BCFC3628C1E37700754D33 /* GIFItem_CoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFItem_CoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F4BCFC3728C1E37700754D33 /* GIFItem_CoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFItem_CoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F4BCFC3828C1E37700754D33 /* UserData_CoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData_CoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F4BCFC3928C1E37700754D33 /* UserData_CoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData_CoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F4BCFC3A28C1E37700754D33 /* GIFSize_CoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFSize_CoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F4BCFC3B28C1E37700754D33 /* GIFSize_CoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFSize_CoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F4BCFC3C28C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFCategory_CoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F4BCFC3D28C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFCategory_CoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F4BCFC4628C1F12400754D33 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,7 +368,6 @@
 				F465675B28AE8CDD00094FA2 /* SearchView.swift */,
 				F465678028B6693100094FA2 /* SearchViewCell.swift */,
 				F465678228B91B6A00094FA2 /* ContentGIFView.swift */,
-				F465677B28B0C8C300094FA2 /* PinterestLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,8 +448,10 @@
 		F465676F28AE912700094FA2 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				F4BCFC3128C1CB0200754D33 /* GIPHYDataProperty */,
+				F4BCFC3028C1CAC700754D33 /* GIPHYDataClass */,
 				F465677028AE914400094FA2 /* GIFs.swift */,
-				F465670A28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld */,
+				F465670A28ADE18D00094FA2 /* GIPHYData.xcdatamodeld */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -468,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				F465678428BB29BC00094FA2 /* UIImage +.swift */,
+				F4BCFBDE28C1AD1C00754D33 /* CodingUserInfoKey +.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -484,6 +506,8 @@
 			isa = PBXGroup;
 			children = (
 				F465679528BF235200094FA2 /* FavoriteView.swift */,
+				F4BCFC4628C1F12400754D33 /* FavoriteCell.swift */,
+				F465677B28B0C8C300094FA2 /* PinterestLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -531,6 +555,28 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F4BCFC3028C1CAC700754D33 /* GIPHYDataClass */ = {
+			isa = PBXGroup;
+			children = (
+				F4BCFC3628C1E37700754D33 /* GIFItem_CoreData+CoreDataClass.swift */,
+				F4BCFC3828C1E37700754D33 /* UserData_CoreData+CoreDataClass.swift */,
+				F4BCFC3A28C1E37700754D33 /* GIFSize_CoreData+CoreDataClass.swift */,
+				F4BCFC3C28C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift */,
+			);
+			path = GIPHYDataClass;
+			sourceTree = "<group>";
+		};
+		F4BCFC3128C1CB0200754D33 /* GIPHYDataProperty */ = {
+			isa = PBXGroup;
+			children = (
+				F4BCFC3728C1E37700754D33 /* GIFItem_CoreData+CoreDataProperties.swift */,
+				F4BCFC3928C1E37700754D33 /* UserData_CoreData+CoreDataProperties.swift */,
+				F4BCFC3B28C1E37700754D33 /* GIFSize_CoreData+CoreDataProperties.swift */,
+				F4BCFC3D28C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift */,
+			);
+			path = GIPHYDataProperty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -789,17 +835,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BCFC4528C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift in Sources */,
 				F465675328AE1FB700094FA2 /* TabBarPageCase.swift in Sources */,
+				F4BCFC4328C1E37700754D33 /* GIFSize_CoreData+CoreDataProperties.swift in Sources */,
 				F465670628ADE18D00094FA2 /* SearchViewController.swift in Sources */,
+				F4BCFC3E28C1E37700754D33 /* GIFItem_CoreData+CoreDataClass.swift in Sources */,
 				F465675E28AE8EA100094FA2 /* SearchViewModel.swift in Sources */,
+				F4BCFC4128C1E37700754D33 /* UserData_CoreData+CoreDataProperties.swift in Sources */,
 				F465677F28B4ADAA00094FA2 /* NetworkResult.swift in Sources */,
+				F4BCFC4028C1E37700754D33 /* UserData_CoreData+CoreDataClass.swift in Sources */,
 				F465678828BB29FB00094FA2 /* ImageCacheManager.swift in Sources */,
 				F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */,
+				F4BCFC3F28C1E37700754D33 /* GIFItem_CoreData+CoreDataProperties.swift in Sources */,
 				F465674328ADF14000094FA2 /* CoordinatorDelegate.swift in Sources */,
 				F465674128ADF12300094FA2 /* Coordinator.swift in Sources */,
 				F465676028AE8EC700094FA2 /* ViewModel.swift in Sources */,
 				F465678128B6693100094FA2 /* SearchViewCell.swift in Sources */,
+				F4BCFBDF28C1AD1C00754D33 /* CodingUserInfoKey +.swift in Sources */,
 				F465673E28ADF0D200094FA2 /* AppCoordinator.swift in Sources */,
+				F4BCFC4428C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift in Sources */,
 				F465679C28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift in Sources */,
 				F465677C28B0C8C300094FA2 /* PinterestLayout.swift in Sources */,
 				F465676728AE8F9300094FA2 /* NetworkError.swift in Sources */,
@@ -814,6 +868,7 @@
 				F465676E28AE90FE00094FA2 /* GIPHYRepository.swift in Sources */,
 				F465674B28ADF62600094FA2 /* BaseViewController.swift in Sources */,
 				F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */,
+				F4BCFC4228C1E37700754D33 /* GIFSize_CoreData+CoreDataClass.swift in Sources */,
 				F465679428BF233E00094FA2 /* FavoriteViewController.swift in Sources */,
 				F465677128AE914400094FA2 /* GIFs.swift in Sources */,
 				F465675C28AE8CDD00094FA2 /* SearchView.swift in Sources */,
@@ -823,8 +878,9 @@
 				F465679A28BF2CB600094FA2 /* DatabaseUseCase.swift in Sources */,
 				F465679E28BF2D2C00094FA2 /* DatabaseRepository.swift in Sources */,
 				F465675128AE1F4800094FA2 /* TabBarCoordinator.swift in Sources */,
-				F465670C28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld in Sources */,
+				F465670C28ADE18D00094FA2 /* GIPHYData.xcdatamodeld in Sources */,
 				F465677328AE947800094FA2 /* EndPoint.swift in Sources */,
+				F4BCFC4728C1F12400754D33 /* FavoriteCell.swift in Sources */,
 				F465676428AE8F5E00094FA2 /* SearchUseCase.swift in Sources */,
 				F465676A28AE902400094FA2 /* GIPHYRepositoryInterface.swift in Sources */,
 			);
@@ -1168,13 +1224,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F465670A28ADE18D00094FA2 /* FavoritedGIFData.xcdatamodeld */ = {
+		F465670A28ADE18D00094FA2 /* GIPHYData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				F465670B28ADE18D00094FA2 /* GIPHY.xcdatamodel */,
 			);
 			currentVersion = F465670B28ADE18D00094FA2 /* GIPHY.xcdatamodel */;
-			path = FavoritedGIFData.xcdatamodeld;
+			path = GIPHYData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

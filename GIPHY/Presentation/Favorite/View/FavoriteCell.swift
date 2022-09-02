@@ -1,14 +1,14 @@
 //
-//  SearchViewCell.swift
+//  FavoriteCell.swift
 //  GIPHY
 //
-//  Created by Sang hun Lee on 2022/08/24.
+//  Created by Sang hun Lee on 2022/09/02.
 //
 
 import UIKit
 
-final class SearchViewCell: UICollectionViewCell, ViewRepresentable {
-    static let identifier = "SearchViewCell"
+final class FavoriteCell: UICollectionViewCell, ViewRepresentable {
+    static let identifier = "FavoriteCell"
     
     let cellView: ContentGIFView = {
         let view = ContentGIFView()
@@ -28,10 +28,11 @@ final class SearchViewCell: UICollectionViewCell, ViewRepresentable {
         super.init(coder: coder)
     }
     
-    func setup(gifItem: GIFItem, indexPath: Int) {
+    func setup(gifItem: GIFItem_CoreData, indexPath: Int) {
         cellView.indicatorAction(bool: true)
         DispatchQueue.global().async { [weak self] in
-            let image = UIImage.gifImageWithURL(gifItem.images.preview.url)
+            guard let url = gifItem.images?.preview?.url else { return }
+            let image = UIImage.gifImageWithURL(url)
             DispatchQueue.main.async {
                 self?.cellView.imageView.image = image
                 self?.cellView.indicatorAction(bool: false)

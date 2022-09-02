@@ -18,9 +18,7 @@ final class FavoriteViewController: UIViewController {
     private var viewModel: FavoriteViewModel
     
     private lazy var input = FavoriteViewModel.Input(
-        didSelectRowAt: <#Signal<FavoritedGIFItem>#>,
-        deleteForRowAt: <#Signal<IndexPath>#>,
-        viewWillAppear: <#Signal<Void>#>
+        didSelectRowAt: favoriteView.collectionView.rx.modelSelected(GIFItem_CoreData.self).asSignal()
     )
     
     lazy var output = viewModel.transform(input: input)
@@ -64,9 +62,9 @@ private extension FavoriteViewController {
 
         output.favoritedGifs
             .drive(favoriteView.collectionView.rx.items) { collectionView, index, element in
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchViewCell.identifier, for: IndexPath(item: index, section: 0)) as? SearchViewCell else { return UICollectionViewCell()
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.identifier, for: IndexPath(item: index, section: 0)) as? FavoriteCell else { return UICollectionViewCell()
                 }
-                // cell.setup(gifItem: element, indexPath: index)
+                cell.setup(gifItem: element, indexPath: index)
                 return cell
             }
             .disposed(by: disposeBag)
@@ -94,9 +92,12 @@ extension FavoriteViewController: PinterestLayoutDelegate {
         output.favoritedGifs
             .drive { gifs in
                 if !gifs.isEmpty {
-//                    let width = (gifs[indexPath.item].images.preview.width as NSString).floatValue
-//                    let height = (gifs[indexPath.item].images.preview.height as NSString).floatValue
-//                    computedRatio = CGFloat(height / width)
+                    if let widthData = gifs[indexPath.item].images?.preview?.width,
+                       let heightData = gifs[indexPath.item].images?.preview?.height {
+                        let widthNum = (widthData as NSString).floatValue
+                        let heightNum = (heightData as NSString).floatValue
+                        computedRatio = CGFloat(heightNum / widthNum)
+                    }
                 }
             }
             .disposed(by: self.disposeBag)

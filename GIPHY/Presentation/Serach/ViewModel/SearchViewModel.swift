@@ -10,23 +10,6 @@ import RxSwift
 import RxCocoa
 import Toast_Swift
 
-enum CategoryStatus: Int, CaseIterable {
-    case gif
-    case sticker
-    case text
-    
-    var title: String {
-        switch self {
-        case .gif:
-            return "GIFs"
-        case .sticker:
-            return "Stickers"
-        case .text:
-            return "Text"
-        }
-    }
-}
-
 final class SearchViewModel: NSObject, ViewModel {
     var disposeBag = DisposeBag()
     
@@ -157,6 +140,23 @@ private extension SearchViewModel {
             }
         )
         .disposed(by: self.disposeBag)
+    }
+}
+
+enum CategoryStatus: Int, CaseIterable {
+    case gif
+    case sticker
+    case text
+    
+    var title: String {
+        switch self {
+        case .gif:
+            return "GIFs"
+        case .sticker:
+            return "Stickers"
+        case .text:
+            return "Text"
+        }
     }
 }
 
