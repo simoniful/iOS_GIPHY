@@ -63,6 +63,9 @@
 		F4BCFC4428C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3C28C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift */; };
 		F4BCFC4528C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC3D28C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift */; };
 		F4BCFC4728C1F12400754D33 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4628C1F12400754D33 /* FavoriteCell.swift */; };
+		F4BCFC4928C4523800754D33 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4828C4523800754D33 /* DetailView.swift */; };
+		F4BCFC4B28C4524800754D33 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4A28C4524800754D33 /* DetailViewController.swift */; };
+		F4BCFC4D28C4525400754D33 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4C28C4525400754D33 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +152,9 @@
 		F4BCFC3C28C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFCategory_CoreData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F4BCFC3D28C1E37700754D33 /* GIFCategory_CoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIFCategory_CoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F4BCFC4628C1F12400754D33 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		F4BCFC4828C4523800754D33 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		F4BCFC4A28C4524800754D33 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F4BCFC4C28C4525400754D33 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +545,7 @@
 		F465678D28BF227300094FA2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F4BCFC4C28C4525400754D33 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -546,6 +553,7 @@
 		F465678E28BF227900094FA2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F4BCFC4A28C4524800754D33 /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -553,6 +561,7 @@
 		F465678F28BF227F00094FA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4BCFC4828C4523800754D33 /* DetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -862,17 +871,20 @@
 				F465675728AE214000094FA2 /* SearchCoordinator.swift in Sources */,
 				F465678528BB29BD00094FA2 /* UIImage +.swift in Sources */,
 				F465677528AE949B00094FA2 /* APIKey.swift in Sources */,
+				F4BCFC4B28C4524800754D33 /* DetailViewController.swift in Sources */,
 				F465677A28AF43CB00094FA2 /* GIFSearchResponseDTO.swift in Sources */,
 				F465679628BF235200094FA2 /* FavoriteView.swift in Sources */,
 				F465674E28ADF75B00094FA2 /* ViewRepresentable.swift in Sources */,
 				F465676E28AE90FE00094FA2 /* GIPHYRepository.swift in Sources */,
 				F465674B28ADF62600094FA2 /* BaseViewController.swift in Sources */,
 				F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */,
+				F4BCFC4D28C4525400754D33 /* DetailViewModel.swift in Sources */,
 				F4BCFC4228C1E37700754D33 /* GIFSize_CoreData+CoreDataClass.swift in Sources */,
 				F465679428BF233E00094FA2 /* FavoriteViewController.swift in Sources */,
 				F465677128AE914400094FA2 /* GIFs.swift in Sources */,
 				F465675C28AE8CDD00094FA2 /* SearchView.swift in Sources */,
 				F465679228BF230F00094FA2 /* FavoriteCoordinator.swift in Sources */,
+				F4BCFC4928C4523800754D33 /* DetailView.swift in Sources */,
 				F465674928ADF61900094FA2 /* BaseView.swift in Sources */,
 				F465674528ADF15100094FA2 /* CoordinatorStyleCase.swift in Sources */,
 				F465679A28BF2CB600094FA2 /* DatabaseUseCase.swift in Sources */,

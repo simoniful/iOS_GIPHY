@@ -34,7 +34,7 @@ final class FavoriteCell: UICollectionViewCell, ViewRepresentable {
             guard let url = gifItem.images?.preview?.url else { return }
             let image = UIImage.gifImageWithURL(url)
             DispatchQueue.main.async {
-                self?.cellView.imageView.image = image
+                self?.cellView.imageView.image = image 
                 self?.cellView.indicatorAction(bool: false)
             }
         }

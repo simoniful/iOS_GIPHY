@@ -42,11 +42,6 @@ final class SearchView: BaseView {
         return refreshControl
     }()
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-       
-    }
-    
     override func configure() {
         [collectionView, noResultLabel].forEach {
             addSubview($0)

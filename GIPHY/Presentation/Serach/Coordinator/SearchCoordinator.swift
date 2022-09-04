@@ -29,34 +29,18 @@ final class SearchCoordinator: Coordinator {
         )
         navigationController.pushViewController(vc, animated: true)
     }
-//
-//    func pushDetailViewController(news: News, scrapedNews: ScrapedNews?) {
-//        let vc = NewsWebViewController(
-//            viewModel: NewsWebViewModel(
-//                coordinator: self,
-//                news: news,
-//                scrapedNews: scrapedNews
-//            )
-//        )
-//        vc.hidesBottomBarWhenPushed = true
-//        navigationController.pushViewController(vc, animated: true)
-//    }
-//
-//    func presentNewsTagmakerViewController(
-//        tags: [String], newsTagmakerDelegate: NewsTagmakerDelegate
-//    ) {
-//        let vc = UINavigationController(
-//            rootViewController: NewsTagmakerViewController(
-//                viewModel: NewsTagmakerViewModel(
-//                    coordinator: self,
-//                    newsTagmakerDelegate: newsTagmakerDelegate,
-//                    tags: tags
-//                )
-//            )
-//        )
-//        vc.modalPresentationStyle = .fullScreen
-//        navigationController.present(vc, animated: true)
-//    }
+
+    func pushDetailViewController(item: GIFItem, savedItem: GIFItem_CoreData?) {
+        let vc = DetailViewController(
+            viewModel: DetailViewModel(
+                coordinator: self,
+                item: item,
+                savedItem: savedItem
+            )
+        )
+        vc.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(vc, animated: true)
+    }
     
     func dismissToNewsListViewController(message: String? = nil) {
         navigationController.dismiss(animated: true) {
