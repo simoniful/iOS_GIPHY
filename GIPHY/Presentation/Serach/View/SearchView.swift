@@ -23,7 +23,6 @@ final class SearchView: BaseView {
         )
         collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: SearchViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.refreshControl = refreshControl
         return collectionView
     }()
     
@@ -35,11 +34,6 @@ final class SearchView: BaseView {
         label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        return refreshControl
     }()
     
     override func configure() {

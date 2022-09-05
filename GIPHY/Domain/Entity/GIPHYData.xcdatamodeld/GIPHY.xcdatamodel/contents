@@ -33,9 +33,9 @@
         <relationship name="gifItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GIFItem_CoreData" inverseName="user" inverseEntity="GIFItem_CoreData"/>
     </entity>
     <elements>
-        <element name="GIFItem_CoreData" positionX="-145.859375" positionY="-153.94921875" width="128" height="28"/>
-        <element name="UserData_CoreData" positionX="-117" positionY="-63" width="128" height="14"/>
-        <element name="GIFSize_CoreData" positionX="-108" positionY="-54" width="128" height="14"/>
-        <element name="GIFCategory_CoreData" positionX="-99" positionY="-45" width="128" height="14"/>
+        <element name="GIFItem_CoreData" positionX="-145.859375" positionY="-153.94921875" width="128" height="148"/>
+        <element name="UserData_CoreData" positionX="-104.234375" positionY="61.2890625" width="128" height="88"/>
+        <element name="GIFSize_CoreData" positionX="15.51953125" positionY="163.66015625" width="128" height="133"/>
+        <element name="GIFCategory_CoreData" positionX="218.828125" positionY="-56.62109375" width="128" height="88"/>
     </elements>
 </model>

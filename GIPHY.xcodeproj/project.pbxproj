@@ -66,6 +66,7 @@
 		F4BCFC4928C4523800754D33 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4828C4523800754D33 /* DetailView.swift */; };
 		F4BCFC4B28C4524800754D33 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4A28C4524800754D33 /* DetailViewController.swift */; };
 		F4BCFC4D28C4525400754D33 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4C28C4525400754D33 /* DetailViewModel.swift */; };
+		F4BCFC4F28C5B2F700754D33 /* UIImageView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4E28C5B2F700754D33 /* UIImageView +.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		F4BCFC4828C4523800754D33 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F4BCFC4A28C4524800754D33 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F4BCFC4C28C4525400754D33 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		F4BCFC4E28C5B2F700754D33 /* UIImageView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView +.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				F465678428BB29BC00094FA2 /* UIImage +.swift */,
+				F4BCFC4E28C5B2F700754D33 /* UIImageView +.swift */,
 				F4BCFBDE28C1AD1C00754D33 /* CodingUserInfoKey +.swift */,
 			);
 			path = Extensions;
@@ -877,6 +880,7 @@
 				F465674E28ADF75B00094FA2 /* ViewRepresentable.swift in Sources */,
 				F465676E28AE90FE00094FA2 /* GIPHYRepository.swift in Sources */,
 				F465674B28ADF62600094FA2 /* BaseViewController.swift in Sources */,
+				F4BCFC4F28C5B2F700754D33 /* UIImageView +.swift in Sources */,
 				F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */,
 				F4BCFC4D28C4525400754D33 /* DetailViewModel.swift in Sources */,
 				F4BCFC4228C1E37700754D33 /* GIFSize_CoreData+CoreDataClass.swift in Sources */,

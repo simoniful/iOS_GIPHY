@@ -47,20 +47,10 @@ final class DetailView: BaseView {
     lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 20)
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    lazy var indicatorView: UIActivityIndicatorView = {
-        let indicatorView = UIActivityIndicatorView()
-        indicatorView.hidesWhenStopped = true
-        indicatorView.color = .systemGray
-        indicatorView.backgroundColor = .black
-        indicatorView.alpha = 0.4
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        return indicatorView
     }()
 
     override init(frame: CGRect) {
@@ -72,9 +62,7 @@ final class DetailView: BaseView {
     }
     
     override func configure() {
-        [scrollView, indicatorView].forEach {
-            addSubview($0)
-        }
+        addSubview(scrollView)
         
         [contentView, userImageView, userNameLabel].forEach {
             scrollView.addSubview($0)
@@ -83,10 +71,6 @@ final class DetailView: BaseView {
     
     override func layout() {
         scrollView.snp.makeConstraints {
-            $0.edges.equalTo(self.safeAreaLayoutGuide)
-        }
-        
-        indicatorView.snp.makeConstraints {
             $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
         

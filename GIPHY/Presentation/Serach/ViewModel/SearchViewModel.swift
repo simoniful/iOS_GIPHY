@@ -29,7 +29,6 @@ final class SearchViewModel: NSObject, ViewModel {
     }
     
     struct Input {
-        let refreshSignal: Signal<Void>
         let prefetchItemsAt: Signal<[IndexPath]>
         let didSelectRowAt: Signal<GIFItem>
     }
@@ -37,7 +36,6 @@ final class SearchViewModel: NSObject, ViewModel {
     struct Output {
         let gifs: Driver<[GIFItem]>
         let reloadCollection: Signal<Void>
-        let endRefreshing: Signal<Void>
         let showToastAction: Signal<String>
         let scrollToTop: Signal<Void>
     }
@@ -86,10 +84,19 @@ final class SearchViewModel: NSObject, ViewModel {
             })
             .disposed(by: disposeBag)
         
+        input.didSelectRowAt
+            .emit { [weak self] item in
+                guard let self = self else { return }
+                self.coordinator?.pushDetailViewController(
+                    item: item,
+                    savedItem: nil
+                )
+            }
+            .disposed(by: disposeBag)
+        
         return Output(
             gifs: gifs.asDriver(),
             reloadCollection: reloadCollection.asSignal(),
-            endRefreshing: endRefreshing.asSignal(),
             showToastAction: showToastAction.asSignal(),
             scrollToTop: scrollToTop.asSignal()
         )

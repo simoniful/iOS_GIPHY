@@ -20,7 +20,7 @@ struct GIFItem: Codable, Equatable {
     let title: String
     let images: GIFCategory
     let user: UserData
-    let isFavorite: Bool
+    var isFavorite: Bool
 
     static func == (lhs: GIFItem, rhs: GIFItem) -> Bool {
         return lhs.id == rhs.id

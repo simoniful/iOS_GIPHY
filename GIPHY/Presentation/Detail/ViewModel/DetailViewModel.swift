@@ -18,6 +18,15 @@ final class DetailViewModel: NSObject, ViewModel {
     var item: GIFItem
     var savedItem: GIFItem_CoreData?
     
+    private var savedGIFs: [GIFItem_CoreData] {
+        didSet {
+            let filterValue = self.savedGIFs.filter { $0.id == item.id }
+            if filterValue.count >= 1 {
+                item.isFavorite = true
+            } 
+        }
+    }
+    
     init(
         coordinator: Coordinator?,
         dataBaseUseCase: DataBaseUseCase = DataBaseUseCase(
@@ -30,12 +39,12 @@ final class DetailViewModel: NSObject, ViewModel {
         self.dataBaseUseCase = dataBaseUseCase
         self.item = item
         self.savedItem = savedItem
+        self.savedGIFs = dataBaseUseCase.fetchData(request: GIFItem_CoreData.fetchRequest())
     }
     
     struct Input {
         let rightBarDownloadButtonTapped: Signal<Void>
         let rightBarBookmarkButtonTapped: Signal<Void>
-        let gifLoaded: Signal<Void>
     }
     
     struct Output {
@@ -44,11 +53,30 @@ final class DetailViewModel: NSObject, ViewModel {
         let savedState: Driver<Bool>
     }
     
+    private let showToastAction = PublishRelay<String>()
+    private let indicatorAction = BehaviorRelay<Bool>(value: true)
+    private lazy var savedState = BehaviorRelay<Bool>(value: item.isFavorite)
     
     func transform(input: Input) -> Output {
+        input.rightBarBookmarkButtonTapped
+            .emit(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.item.isFavorite.toggle()
+                if self.item.isFavorite {
+                    self.saveItem(item: self.item)
+                } else {
+                    guard let savedItem = self.savedItem else { return }
+                    self.unsavedItem(savedItem: savedItem)
+                }
+                self.savedState.accept(self.item.isFavorite)
+            })
+            .disposed(by: disposeBag)
         
-        
-        return Output()
+        return Output(
+            showToastAction: showToastAction.asSignal(),
+            indicatorAction: indicatorAction.asDriver(),
+            savedState: savedState.asDriver()
+        )
     }
 }
 
