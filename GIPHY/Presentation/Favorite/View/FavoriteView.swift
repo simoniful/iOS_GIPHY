@@ -16,7 +16,7 @@ final class FavoriteView: BaseView {
             frame: .zero,
             collectionViewLayout: layout
         )
-        collectionView.register(SearchViewCell.self, forCellWithReuseIdentifier: FavoriteCell.identifier)
+        collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: FavoriteCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -32,6 +32,7 @@ final class FavoriteView: BaseView {
     }()
     
     override func configure() {
+        self.backgroundColor = .systemBackground
         [collectionView, noResultLabel].forEach {
             addSubview($0)
         }
@@ -39,8 +40,8 @@ final class FavoriteView: BaseView {
     
     override func layout() {
         collectionView.snp.makeConstraints {
-            $0.leading.trailing.equalTo(safeAreaLayoutGuide).inset(16.0)
-            $0.top.bottom.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalTo(safeAreaLayoutGuide).inset(10.0)
+            $0.top.equalTo(safeAreaLayoutGuide)
         }
         
         noResultLabel.snp.makeConstraints {

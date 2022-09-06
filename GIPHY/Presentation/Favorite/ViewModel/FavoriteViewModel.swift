@@ -27,18 +27,36 @@ final class FavoriteViewModel: NSObject, ViewModel {
     
     struct Input {
         let didSelectRowAt: Signal<GIFItem_CoreData>
+        let viewWillAppear: Signal<Void>
+        let viewDidDisappear: Signal<Void>
     }
     
     struct Output {
         let favoritedGifs: Driver<[GIFItem_CoreData]>
+        let updateLayout: Signal<Void>
     }
     
-    private let favoritedGifs = BehaviorRelay<[GIFItem_CoreData]>(value: [])
+    let favoritedGifs = BehaviorRelay<[GIFItem_CoreData]>(value: [])
+    let updateLayout = PublishRelay<Void>()
     
     func transform(input: Input) -> Output {
+        input.viewWillAppear
+            .emit(onNext: { [weak self] _ in
+                self?.updateLayout.accept(())
+                self?.requestGIFItems()
+            })
+            .disposed(by: disposeBag)
         
+        input.viewDidDisappear
+            .emit(onNext: { [weak self] _ in 
+                self?.favoritedGifs.accept([])
+            })
+            .disposed(by: disposeBag)
         
-        return Output(favoritedGifs: favoritedGifs.asDriver())
+        return Output(
+            favoritedGifs: favoritedGifs.asDriver(),
+            updateLayout: updateLayout.asSignal()
+        )
     }
 }
 

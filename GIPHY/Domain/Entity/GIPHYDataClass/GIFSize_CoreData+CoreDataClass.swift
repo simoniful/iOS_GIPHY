@@ -44,8 +44,8 @@ public class GIFSize_CoreData: NSManagedObject, Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case height = "original"
-        case width = "preview"
+        case height = "height"
+        case width = "width"
         case size = "size"
         case url = "url"
     }

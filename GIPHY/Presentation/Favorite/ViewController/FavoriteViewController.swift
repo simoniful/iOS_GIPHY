@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import SnapKit
+
 
 final class FavoriteViewController: UIViewController {
     private var disposeBag = DisposeBag()
@@ -18,7 +18,9 @@ final class FavoriteViewController: UIViewController {
     private var viewModel: FavoriteViewModel
     
     private lazy var input = FavoriteViewModel.Input(
-        didSelectRowAt: favoriteView.collectionView.rx.modelSelected(GIFItem_CoreData.self).asSignal()
+        didSelectRowAt: favoriteView.collectionView.rx.modelSelected(GIFItem_CoreData.self).asSignal(),
+        viewWillAppear: self.rx.viewWillAppear.asSignal(),
+        viewDidDisappear: self.rx.viewDidDisappear.asSignal()
     )
     
     lazy var output = viewModel.transform(input: input)
@@ -55,9 +57,7 @@ private extension FavoriteViewController {
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        guard let layout = favoriteView.collectionView.collectionViewLayout as? PinterestLayout else {
-            return
-        }
+        guard let layout = favoriteView.collectionView.collectionViewLayout as? PinterestLayout else { return }
         layout.delegate = self
 
         output.favoritedGifs
@@ -68,6 +68,12 @@ private extension FavoriteViewController {
                 return cell
             }
             .disposed(by: disposeBag)
+        
+        output.updateLayout
+            .emit(onNext: { _ in
+                layout.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -75,33 +81,16 @@ extension FavoriteViewController: UICollectionViewDelegate { }
 
 extension FavoriteViewController: PinterestLayoutDelegate {
     func numberOfItemsInCollectionView() -> Int {
-        var count: Int = 0
-
-        output.favoritedGifs
-            .drive { gifs in
-                count = gifs.count
-            }
-            .disposed(by: disposeBag)
-
-        return count
+        return viewModel.favoritedGifs.value.count
     }
 
     func collectionView(_ collectionView: UICollectionView, RatioForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
-        var computedRatio: CGFloat = 0
-
-        output.favoritedGifs
-            .drive { gifs in
-                if !gifs.isEmpty {
-                    if let widthData = gifs[indexPath.item].images?.preview?.width,
-                       let heightData = gifs[indexPath.item].images?.preview?.height {
-                        let widthNum = (widthData as NSString).floatValue
-                        let heightNum = (heightData as NSString).floatValue
-                        computedRatio = CGFloat(heightNum / widthNum)
-                    }
-                }
-            }
-            .disposed(by: self.disposeBag)
-
+        let gifs = viewModel.favoritedGifs.value
+        guard let widthData = gifs[indexPath.item].images?.preview?.width else { return 0.75 }
+        guard let heightData = gifs[indexPath.item].images?.preview?.height else { return 0.75 }
+        let widthNum = (widthData as NSString).floatValue
+        let heightNum = (heightData as NSString).floatValue
+        let computedRatio = CGFloat(heightNum / widthNum)
         return computedRatio
     }
 }

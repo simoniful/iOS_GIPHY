@@ -18,14 +18,7 @@ final class DetailViewModel: NSObject, ViewModel {
     var item: GIFItem
     var savedItem: GIFItem_CoreData?
     
-    private var savedGIFs: [GIFItem_CoreData] {
-        didSet {
-            let filterValue = self.savedGIFs.filter { $0.id == item.id }
-            if filterValue.count >= 1 {
-                item.isFavorite = true
-            } 
-        }
-    }
+    private var savedGIFs: [GIFItem_CoreData] 
     
     init(
         coordinator: Coordinator?,
@@ -45,6 +38,7 @@ final class DetailViewModel: NSObject, ViewModel {
     struct Input {
         let rightBarDownloadButtonTapped: Signal<Void>
         let rightBarBookmarkButtonTapped: Signal<Void>
+        let viewWillAppear: Signal<Void>
     }
     
     struct Output {
@@ -58,6 +52,18 @@ final class DetailViewModel: NSObject, ViewModel {
     private lazy var savedState = BehaviorRelay<Bool>(value: item.isFavorite)
     
     func transform(input: Input) -> Output {
+        input.viewWillAppear
+            .emit(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                let filterValue = self.savedGIFs.filter { $0.id == self.item.id }
+                if filterValue.count >= 1 {
+                    self.item.isFavorite = true
+                    self.savedState.accept(self.item.isFavorite)
+                    self.savedItem = filterValue.first
+                }
+            })
+            .disposed(by: disposeBag)
+        
         input.rightBarBookmarkButtonTapped
             .emit(onNext: { [weak self] _ in
                 guard let self = self else { return }

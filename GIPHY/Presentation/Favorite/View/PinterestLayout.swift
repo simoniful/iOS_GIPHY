@@ -5,10 +5,8 @@
 //  Created by Sang hun Lee on 2022/08/20.
 //
 
-import Foundation
+
 import UIKit
-import RxSwift
-import RxCocoa
 
 protocol PinterestLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, RatioForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat
@@ -19,7 +17,7 @@ protocol PinterestLayoutDelegate: AnyObject {
 class PinterestLayout: UICollectionViewLayout {
     weak var delegate: PinterestLayoutDelegate?
     
-    private let numberOfColumns = 2
+    private let numberOfColumns = 3
     private let cellPadding: CGFloat = 8.0
     
     private var cache: [UICollectionViewLayoutAttributes] = []
@@ -51,12 +49,12 @@ class PinterestLayout: UICollectionViewLayout {
         var yOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
         
         for index in 0..<yOffset.count {
-            yOffset[index % numberOfColumns] = cache.last(where: {$0.indexPath.row % numberOfColumns == index % numberOfColumns})?.frame.maxY ?? 0
+            yOffset[index % numberOfColumns] = cache.last(where: {$0.indexPath.item % numberOfColumns == index % numberOfColumns})?.frame.maxY ?? 0
         }
         
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
-            if indexPath.row >= cache.count {
+            if indexPath.item >= cache.count {
                 let photoHeight = (delegate?.collectionView(
                     collectionView,
                     RatioForPhotoAtIndexPath: indexPath))! * columnWidth
@@ -93,33 +91,12 @@ class PinterestLayout: UICollectionViewLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cache[indexPath.item]
     }
+    
+    func reloadData(){
+        self.cache = [UICollectionViewLayoutAttributes]()
+    }
 }
 
-//class RxPinterestLayoutProxy: DelegateProxy<PinterestLayout, PinterestLayoutDelegate>, DelegateProxyType, PinterestLayoutDelegate {
-//
-//    static func registerKnownImplementations() {
-//        self.register { (pinterestLayout) -> RxPinterestLayoutProxy in
-//            RxPinterestLayoutProxy(parentObject: pinterestLayout, delegateProxy: self)
-//        }
-//    }
-//
-//    static func currentDelegate(for object: PinterestLayout) -> PinterestLayoutDelegate? {
-//        return object.delegate
-//    }
-//
-//    static func setCurrentDelegate(_ delegate: PinterestLayoutDelegate?, to object: PinterestLayout) {
-//        object.delegate = delegate
-//    }
-//}
-//
-//extension Reactive where Base: PinterestLayout {
-//    var rx_delegate: DelegateProxy<PinterestLayout, PinterestLayoutDelegate> {
-//        return RxPinterestLayoutProxy.proxy(for: self.base)
-//    }
-//
-//    var rx_RatioForPhotoAtIndexPath: Observable<CGFloat?> {
-//        return rx_delegate.sentMessage(#selector(PinterestLayoutDelegate.collectionView(_:RatioForPhotoAtIndexPath:))).map { arr in arr[0] as? CGFloat }
-//    }
-//}
+
 
 

@@ -12,7 +12,7 @@ final class DatabaseRepository: DatabaseRepositoryInterface {
     static let shared: DatabaseRepository = DatabaseRepository()
 
     lazy var container: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "GIFCategory_CoreData")
+        let container = NSPersistentContainer(name: "GIPHYData")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -38,11 +38,10 @@ final class DatabaseRepository: DatabaseRepositoryInterface {
     @discardableResult func saveGIFItem(item: GIFItem) -> Bool {
         do {
             let data = try JSONEncoder().encode(item)
-            print( String(data: data, encoding: .utf8)! )
             let decoder = JSONDecoder()
             decoder.userInfo[CodingUserInfoKey.context!] = self.container.viewContext
             let itemData = try decoder.decode(GIFItem_CoreData.self, from: data)
-            print("Received \(itemData) new commits.")
+            // print("Received \(itemData) new commits.")
             
             if container.viewContext.hasChanges {
                 do {

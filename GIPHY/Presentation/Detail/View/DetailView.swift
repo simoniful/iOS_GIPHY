@@ -62,6 +62,8 @@ final class DetailView: BaseView {
     }
     
     override func configure() {
+        self.backgroundColor = .systemBackground
+        
         addSubview(scrollView)
         
         [contentView, userImageView, userNameLabel].forEach {

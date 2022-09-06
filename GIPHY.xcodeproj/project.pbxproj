@@ -67,6 +67,7 @@
 		F4BCFC4B28C4524800754D33 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4A28C4524800754D33 /* DetailViewController.swift */; };
 		F4BCFC4D28C4525400754D33 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4C28C4525400754D33 /* DetailViewModel.swift */; };
 		F4BCFC4F28C5B2F700754D33 /* UIImageView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC4E28C5B2F700754D33 /* UIImageView +.swift */; };
+		F4BCFC5128C644EA00754D33 /* UIViewController + Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BCFC5028C644EA00754D33 /* UIViewController + Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,7 @@
 		F4BCFC4A28C4524800754D33 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F4BCFC4C28C4525400754D33 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		F4BCFC4E28C5B2F700754D33 /* UIImageView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView +.swift"; sourceTree = "<group>"; };
+		F4BCFC5028C644EA00754D33 /* UIViewController + Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +501,7 @@
 				F465678428BB29BC00094FA2 /* UIImage +.swift */,
 				F4BCFC4E28C5B2F700754D33 /* UIImageView +.swift */,
 				F4BCFBDE28C1AD1C00754D33 /* CodingUserInfoKey +.swift */,
+				F4BCFC5028C644EA00754D33 /* UIViewController + Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				F465678828BB29FB00094FA2 /* ImageCacheManager.swift in Sources */,
 				F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */,
 				F4BCFC3F28C1E37700754D33 /* GIFItem_CoreData+CoreDataProperties.swift in Sources */,
+				F4BCFC5128C644EA00754D33 /* UIViewController + Rx.swift in Sources */,
 				F465674328ADF14000094FA2 /* CoordinatorDelegate.swift in Sources */,
 				F465674128ADF12300094FA2 /* Coordinator.swift in Sources */,
 				F465676028AE8EC700094FA2 /* ViewModel.swift in Sources */,

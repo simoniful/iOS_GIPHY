@@ -112,10 +112,7 @@ extension SearchViewController: UISearchResultsUpdating {
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate {
-    
-    
-}
+extension SearchViewController: UICollectionViewDelegate { }
 
 
 

@@ -17,7 +17,8 @@ final class DetailViewController: UIViewController {
     
     private lazy var input = DetailViewModel.Input(
         rightBarDownloadButtonTapped: detailView.rightBarDownloadButton.rx.tap.asSignal(),
-        rightBarBookmarkButtonTapped: detailView.rightBarBookmarkButton.rx.tap.asSignal()
+        rightBarBookmarkButtonTapped: detailView.rightBarBookmarkButton.rx.tap.asSignal(),
+        viewWillAppear: self.rx.viewWillAppear.asSignal()
     )
     
     private lazy var output = viewModel.transform(input: input)
@@ -66,7 +67,11 @@ private extension DetailViewController {
     }
     
     func bind() {
-        
+        output.savedState
+            .drive {
+                self.setupRightBarButton(with: $0)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func contentViewConfigByItem(
@@ -82,7 +87,14 @@ private extension DetailViewController {
                 isFavorite: item.isFavorite
             )
         } else {
-            
+            guard let savedItem = savedItem else { return }
+            updateContentView(
+                avatar: (savedItem.user?.avatarURL)!,
+                gif: (savedItem.images?.original?.url)!,
+                name: (savedItem.user?.name)!,
+                height: (savedItem.images?.original?.height)!,
+                isFavorite: savedItem.isFavorite
+            )
         }
     }
     
