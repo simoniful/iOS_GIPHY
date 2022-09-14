@@ -49,6 +49,34 @@ public class GIFItem_CoreData: NSManagedObject, Codable {
             print ("error")
         }
     }
+    
+    func convertToGIFItem() -> GIFItem {
+        return GIFItem(
+            type: self.type!,
+            id: self.id!,
+            webPageURL: self.webPageURL!,
+            title: self.title!,
+            images: GIFCategory(
+                original: GIFSize(
+                    height: (self.images?.original?.height)!,
+                    width: (self.images?.original?.width)!,
+                    size: (self.images?.original?.size)!,
+                    url: (self.images?.original?.url)!
+                ),
+                preview: GIFSize(
+                    height: (self.images?.preview?.height)!,
+                    width: (self.images?.preview?.width)!,
+                    size: (self.images?.preview?.size)!,
+                    url: (self.images?.preview?.url)!
+                )
+            ),
+            user: UserData(
+                avatarURL: (self.user?.avatarURL)!,
+                name: (self.user?.name)!
+            ),
+            isFavorite: self.isFavorite
+        )
+    }
 
     enum CodingKeys: String, CodingKey {
         case type = "type"

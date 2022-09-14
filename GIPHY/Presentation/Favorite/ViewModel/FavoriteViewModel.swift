@@ -53,6 +53,16 @@ final class FavoriteViewModel: NSObject, ViewModel {
             })
             .disposed(by: disposeBag)
         
+        input.didSelectRowAt
+            .emit { [weak self] item in
+                guard let self = self else { return }
+                self.coordinator?.pushDetailViewController(
+                    item: item.convertToGIFItem(),
+                    savedItem: item
+                )
+            }
+            .disposed(by: disposeBag)
+        
         return Output(
             favoritedGifs: favoritedGifs.asDriver(),
             updateLayout: updateLayout.asSignal()
