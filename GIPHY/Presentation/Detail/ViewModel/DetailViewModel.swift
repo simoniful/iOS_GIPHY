@@ -9,6 +9,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 import CoreData
+import ImageIO
+import MobileCoreServices
+import Photos
 
 final class DetailViewModel: NSObject, ViewModel {
     var disposeBag = DisposeBag()
@@ -78,6 +81,30 @@ final class DetailViewModel: NSObject, ViewModel {
             })
             .disposed(by: disposeBag)
         
+        input.rightBarDownloadButtonTapped
+            .emit(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                if let img = UIImage.gifImageWithURL(self.item.images.original.url), img.images!.count > 0 {
+
+                    var animationDuration = img.duration
+                    animationDuration = animationDuration / Double(img.images!.count)
+
+                    let url = FileManager.default.urlForFile("saved1.gif")
+                    FileManager.default.createGIF(with: img.images!, name: url, frameDelay: animationDuration)
+
+                    print(img, url, animationDuration)
+                    
+//                    PHPhotoLibrary.shared().performChanges ({
+//                        PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: url)
+//                    }) { saved, error in
+//                        if saved {
+//                            print("Your image was successfully saved")
+//                        }
+//                    }
+                }
+            })
+            .disposed(by: disposeBag)
+        
         return Output(
             showToastAction: showToastAction.asSignal(),
             indicatorAction: indicatorAction.asDriver(),
@@ -98,3 +125,5 @@ private extension DetailViewModel {
         dataBaseUseCase.deleteGIFItem(object: savedItem)
     }
 }
+
+
