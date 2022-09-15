@@ -14,14 +14,18 @@ extension FileManager {
     func createGIF(with images: [UIImage], name: URL, loopCount: Int = 0, frameDelay: Double) {
         let destinationURL = name
         let destinationGIF = CGImageDestinationCreateWithURL(destinationURL as CFURL, kUTTypeGIF, images.count, nil)!
+        let fileProperties = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFLoopCount as String: loopCount]]
+        
+        CGImageDestinationSetProperties(destinationGIF, fileProperties as CFDictionary)
 
-        let properties = [
+        let frameProperties = [
             (kCGImagePropertyGIFDictionary as String): [(kCGImagePropertyGIFDelayTime as String): frameDelay]
+            
         ]
-
+        
         for img in images {
             let cgImage = img.cgImage
-            CGImageDestinationAddImage(destinationGIF, cgImage!, properties as CFDictionary?)
+            CGImageDestinationAddImage(destinationGIF, cgImage!, frameProperties as CFDictionary?)
         }
 
         CGImageDestinationFinalize(destinationGIF)

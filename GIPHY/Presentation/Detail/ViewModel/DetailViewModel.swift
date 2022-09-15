@@ -89,18 +89,17 @@ final class DetailViewModel: NSObject, ViewModel {
                     var animationDuration = img.duration
                     animationDuration = animationDuration / Double(img.images!.count)
 
-                    let url = FileManager.default.urlForFile("saved1.gif")
-                    FileManager.default.createGIF(with: img.images!, name: url, frameDelay: animationDuration)
-
-                    print(img, url, animationDuration)
+                    let url = FileManager.default.urlForFile("\(UUID().uuidString).gif")
                     
-//                    PHPhotoLibrary.shared().performChanges ({
-//                        PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: url)
-//                    }) { saved, error in
-//                        if saved {
-//                            print("Your image was successfully saved")
-//                        }
-//                    }
+                    FileManager.default.createGIF(with: img.images!, name: url, loopCount: 100, frameDelay: animationDuration)
+                    
+                    PHPhotoLibrary.shared().performChanges ({
+                        PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: url)
+                    }) { saved, error in
+                        if saved {
+                            print("Your image was successfully saved")
+                        }
+                    }
                 }
             })
             .disposed(by: disposeBag)
