@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import Toast_Swift
 
 final class DetailViewController: UIViewController {
     private var disposeBag = DisposeBag()
@@ -71,6 +72,12 @@ private extension DetailViewController {
             .drive {
                 self.setupRightBarButton(with: $0)
             }
+            .disposed(by: disposeBag)
+        
+        output.showToastAction
+            .emit(onNext: { [weak self] message in
+                self?.detailView.makeToast(message)
+            })
             .disposed(by: disposeBag)
     }
     

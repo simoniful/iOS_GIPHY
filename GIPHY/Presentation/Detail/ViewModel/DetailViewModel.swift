@@ -9,9 +9,10 @@ import Foundation
 import RxSwift
 import RxCocoa
 import CoreData
-import ImageIO
-import MobileCoreServices
+//import ImageIO
+//import MobileCoreServices
 import Photos
+import Toast_Swift
 
 final class DetailViewModel: NSObject, ViewModel {
     var disposeBag = DisposeBag()
@@ -95,9 +96,9 @@ final class DetailViewModel: NSObject, ViewModel {
                     
                     PHPhotoLibrary.shared().performChanges ({
                         PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: url)
-                    }) { saved, error in
+                    }) { [weak self] saved, error in
                         if saved {
-                            print("Your image was successfully saved")
+                            self?.showToastAction.accept("저장 완료!")
                         }
                     }
                 }
