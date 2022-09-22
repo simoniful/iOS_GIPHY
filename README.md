@@ -1,4 +1,4 @@
-# News App
+# GYPHY Search App
 GYPHY 검색 API를 활용한 iOS GIF 이미지 검색 어플리케이션.
 
 ## Description
