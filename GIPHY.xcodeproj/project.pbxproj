@@ -10,6 +10,8 @@
 		2147BDCFC9DB605D474D102A /* Pods_GIPHY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515188CF4AEC4B2E3C71727C /* Pods_GIPHY.framework */; };
 		4F75576B0F70274281B46565 /* Pods_GIPHYTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5172FD834E8C5386B95C0FE /* Pods_GIPHYTests.framework */; };
 		BF634DD97BA9B7F60901795E /* Pods_GIPHY_GIPHYUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E53480C868129C7039F6B1 /* Pods_GIPHY_GIPHYUITests.framework */; };
+		F4507E9328DC49D500024A18 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4507E9228DC49D500024A18 /* Router.swift */; };
+		F4507E9528DC4B0D00024A18 /* AppDelegateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4507E9428DC4B0D00024A18 /* AppDelegateRouter.swift */; };
 		F465670228ADE18D00094FA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670128ADE18D00094FA2 /* AppDelegate.swift */; };
 		F465670428ADE18D00094FA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670328ADE18D00094FA2 /* SceneDelegate.swift */; };
 		F465670628ADE18D00094FA2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F465670528ADE18D00094FA2 /* SearchViewController.swift */; };
@@ -98,6 +100,8 @@
 		A5172FD834E8C5386B95C0FE /* Pods_GIPHYTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GIPHYTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E53480C868129C7039F6B1 /* Pods_GIPHY_GIPHYUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GIPHY_GIPHYUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA474233BBE60BFAB90D23E /* Pods-GIPHY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GIPHY.release.xcconfig"; path = "Target Support Files/Pods-GIPHY/Pods-GIPHY.release.xcconfig"; sourceTree = "<group>"; };
+		F4507E9228DC49D500024A18 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		F4507E9428DC4B0D00024A18 /* AppDelegateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateRouter.swift; sourceTree = "<group>"; };
 		F46566FE28ADE18D00094FA2 /* GIPHY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIPHY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F465670128ADE18D00094FA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F465670328ADE18D00094FA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +218,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F4507E9128DC49C000024A18 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				F4507E9228DC49D500024A18 /* Router.swift */,
+				F4507E9428DC4B0D00024A18 /* AppDelegateRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
 		F46566F528ADE18D00094FA2 = {
 			isa = PBXGroup;
 			children = (
@@ -244,7 +257,8 @@
 				F465676B28AE90BF00094FA2 /* Data */,
 				F465676128AE8F2600094FA2 /* Domain */,
 				F465676528AE8F8000094FA2 /* Network */,
-				F465673F28ADF0F300094FA2 /* Coordinator */,
+				F465673F28ADF0F300094FA2 /* Coordinators */,
+				F4507E9128DC49C000024A18 /* Routers */,
 				F465673828ADE73600094FA2 /* Database */,
 				F465674628ADF56200094FA2 /* Util */,
 				F465673728ADE71000094FA2 /* Resources */,
@@ -307,14 +321,14 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		F465673F28ADF0F300094FA2 /* Coordinator */ = {
+		F465673F28ADF0F300094FA2 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				F465674028ADF12300094FA2 /* Coordinator.swift */,
 				F465674228ADF14000094FA2 /* CoordinatorDelegate.swift */,
 				F465674428ADF15100094FA2 /* CoordinatorStyleCase.swift */,
 			);
-			path = Coordinator;
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		F465674628ADF56200094FA2 /* Util */ = {
@@ -860,6 +874,7 @@
 				F4BCFC3E28C1E37700754D33 /* GIFItem_CoreData+CoreDataClass.swift in Sources */,
 				F465675E28AE8EA100094FA2 /* SearchViewModel.swift in Sources */,
 				F4BCFC4128C1E37700754D33 /* UserData_CoreData+CoreDataProperties.swift in Sources */,
+				F4507E9528DC4B0D00024A18 /* AppDelegateRouter.swift in Sources */,
 				F465677F28B4ADAA00094FA2 /* NetworkResult.swift in Sources */,
 				F4BCFC4028C1E37700754D33 /* UserData_CoreData+CoreDataClass.swift in Sources */,
 				F465678828BB29FB00094FA2 /* ImageCacheManager.swift in Sources */,
@@ -875,6 +890,7 @@
 				F4BCFC4428C1E37700754D33 /* GIFCategory_CoreData+CoreDataClass.swift in Sources */,
 				F465679C28BF2D0600094FA2 /* DatabaseRepositoryInterface.swift in Sources */,
 				F465677C28B0C8C300094FA2 /* PinterestLayout.swift in Sources */,
+				F4507E9328DC49D500024A18 /* Router.swift in Sources */,
 				F465676728AE8F9300094FA2 /* NetworkError.swift in Sources */,
 				F465679828BF248B00094FA2 /* FavoriteViewModel.swift in Sources */,
 				F465678328B91B6A00094FA2 /* ContentGIFView.swift in Sources */,
