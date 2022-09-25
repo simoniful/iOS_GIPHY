@@ -23,10 +23,10 @@ final class AppCoordinator: Coordinator {
     }
 
     private func connectTabBarFlow() {
-        let newsTabCoordinator = TabBarCoordinator(self.navigationController)
-        newsTabCoordinator.delegate = self
-        newsTabCoordinator.start()
-        childCoordinators.append(newsTabCoordinator)
+        let tabCoordinator = TabBarCoordinator(self.navigationController)
+        tabCoordinator.delegate = self
+        tabCoordinator.start()
+        childCoordinators.append(tabCoordinator)
     }
 }
 
