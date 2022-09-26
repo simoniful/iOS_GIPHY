@@ -245,7 +245,6 @@
 				F465676128AE8F2600094FA2 /* Domain */,
 				F465676528AE8F8000094FA2 /* Network */,
 				F465673F28ADF0F300094FA2 /* Coordinators */,
-				F465673828ADE73600094FA2 /* Database */,
 				F465674628ADF56200094FA2 /* Util */,
 				F465673728ADE71000094FA2 /* Resources */,
 				F465671228ADE18E00094FA2 /* Info.plist */,
@@ -298,13 +297,6 @@
 				F465670F28ADE18E00094FA2 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		F465673828ADE73600094FA2 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		F465673F28ADF0F300094FA2 /* Coordinators */ = {

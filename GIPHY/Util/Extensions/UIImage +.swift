@@ -36,7 +36,7 @@ extension UIImage {
             return cachedImage
         }
 
-        guard let bundleURL:URL = URL(string: gifUrl)
+        guard let bundleURL: URL = URL(string: gifUrl)
             else {
                 print("image named \"\(gifUrl)\" doesn't exist")
                 return nil
