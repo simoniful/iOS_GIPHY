@@ -36,7 +36,7 @@ GYPHY 검색 API를 활용한 iOS GIF 이미지 검색 어플리케이션
 
 ### 2. GIF Data Cache
 
-GIF의 움직이는 프레임 기능 구현을 위해 git repo에 공개된 샘플 소스코드를 기반으로 적용했습니다. 그러나, 해당 코드에서는 데이터 캐싱을 따로 해주지 않아서 GIF 데이터 로딩이 끝난 데이터도 나중에 다시 확인하면 로딩을 또 기다려야했습니다. 다시 데이터를 받아오는 과정에 있어서 메모리의 사용과 함께 스크롤 버벅임도 상당히 심했습니다. 문제해결을 위해 해당 소스코드에 이미지 캐싱 기능을 넣어줬습니다. 싱글턴으로 구성한 이미지 캐싱 덕분에 최초에 새로운 GIF데이터를 호출할 때만 스크롤이 딜레이되고 이후에는 딜레이 현상이 없어졌습니다.
+GIF의 움직이는 프레임 기능 구현을 위해 git repo에 공개된 샘플 소스코드를 기반으로 적용했습니다. 그러나, 해당 코드에서는 데이터 캐싱을 따로 해주지 않아서 GIF 데이터 로딩이 끝난 데이터도 나중에 다시 확인하면 로딩을 또 기다려야했습니다. 다시 데이터를 받아오는 과정에 있어서 메모리의 사용과 함께 스크롤 버벅임도 상당히 심했습니다. 문제해결을 위해 해당 소스코드에 이미지 캐싱 기능을 넣어줬습니다. 싱글턴으로 구성한 이미지 캐싱 덕분에 최초에 새로운 GIF 데이터를 호출할 때만 스크롤이 딜레이되고 이 후에는 딜레이 현상이 없어졌습니다.
 
 ```swift
 final class ImageCacheManager {
@@ -83,6 +83,108 @@ protocol ViewModel {
 👉🏻 [ReactorKit으로 단방향 반응형 앱 만들기](https://www.youtube.com/watch?v=ASwBnMJNUK4)
 
 ### 4. 코어 데이터의 immutable 한 객체
+
+```swift
+@objc(GIFItem_CoreData)
+public class GIFItem_CoreData: NSManagedObject, Codable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        do {
+            try container.encode(id ?? "", forKey: .id)
+            try container.encode(type ?? "", forKey: .type)
+            try container.encode(webPageURL ?? "", forKey: .webPageURL)
+            try container.encode(title ?? "", forKey: .title)
+            try container.encode(images, forKey: .images)
+            try container.encode(user, forKey: .user)
+            try container.encode(isFavorite, forKey: .isFavorite)
+        } catch {
+            print("error")
+        }
+    }
+
+    required convenience public init(from decoder: Decoder) throws {
+        guard let contextUserInfoKey = CodingUserInfoKey.context,
+              let managedObjectContext = decoder.userInfo[contextUserInfoKey] as? NSManagedObjectContext,
+              let entity = NSEntityDescription.entity(forEntityName: "GIFItem_CoreData", in: managedObjectContext)
+        else {
+            fatalError("decode failure")
+        }
+
+        self.init(entity: entity, insertInto: managedObjectContext)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        do {
+            type = try values.decode(String.self, forKey: .type)
+            id = try values.decode(String.self, forKey: .id)
+            webPageURL = try values.decode(String.self, forKey: .webPageURL)
+            title = try values.decode(String.self, forKey: .title)
+            images = try values.decode(GIFCategory_CoreData.self, forKey: .images)
+            user = try values.decode(UserData_CoreData.self, forKey: .user)
+            isFavorite = try values.decode(Bool.self, forKey: .isFavorite)
+        } catch {
+            print ("error")
+        }
+    }
+
+    func convertToGIFItem() -> GIFItem {
+        return GIFItem(
+            type: self.type!,
+            id: self.id!,
+            webPageURL: self.webPageURL!,
+            title: self.title!,
+            images: GIFCategory(
+                original: GIFSize(
+                    height: (self.images?.original?.height)!,
+                    width: (self.images?.original?.width)!,
+                    size: (self.images?.original?.size)!,
+                    url: (self.images?.original?.url)!
+                ),
+                preview: GIFSize(
+                    height: (self.images?.preview?.height)!,
+                    width: (self.images?.preview?.width)!,
+                    size: (self.images?.preview?.size)!,
+                    url: (self.images?.preview?.url)!
+                )
+            ),
+            user: UserData(
+                avatarURL: (self.user?.avatarURL)!,
+                name: (self.user?.name)!
+            ),
+            isFavorite: self.isFavorite
+        )
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case id = "id"
+        case webPageURL = "webPageURL"
+        case title = "title"
+        case images = "images"
+        case user = "user"
+        case isFavorite = "isFavorite"
+    }
+}
+
+extension GIFItem_CoreData {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<GIFItem_CoreData> {
+        return NSFetchRequest<GIFItem_CoreData>(entityName: "GIFItem_CoreData")
+    }
+
+    @NSManaged public var type: String?
+    @NSManaged public var id: String?
+    @NSManaged public var isFavorite: Bool
+    @NSManaged public var webPageURL: String?
+    @NSManaged public var title: String?
+    @NSManaged public var user: UserData_CoreData?
+    @NSManaged public var images: GIFCategory_CoreData?
+}
+
+extension GIFItem_CoreData : Identifiable {}
+```
+
+기존의 CoreData를 활용하면서 객체를 단순히 NSManagedObject로 전환하여 저장하는 용도로 활용하였습니다. 이번에는 나아가 깊게 계층화된 JSON 객체를 파싱하는 것과 NSManagedObject의 relationship을 구체화하여 원하는 형태로의 객체를 저장해보고자 하였고, 개별적인 class와 그 property를 구조화하여 기존의 로직에서도 무리없이 활용할 수 있도록 구성하였습니다.
+
+Realm과 비교해서 아쉬웠던 점은 별도의 NSManagedObject 객체는 수정이 번거롭다는 점과 굳이 비슷한 형태의 객체들을 별도로 추상화하여 각자의 useCase 영역에서 활용하는 점에서 비효율적이었습니다. 하지만, immutable하게 객체를 저장한다는 점에서 기밀성과 수정이 어렵다는 점은 보안적인 측면에서 메리트가 있는 것 같습니다. 물론 Cloud를 활용할 수 있다는 부분도 확실한 장점입니다. 사용하는 측면에서 고려하여 DB를 무엇을 사용할지는 항상 고민되는 점 입니다.
 
 ### 5. 클린 아키텍쳐
 
