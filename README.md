@@ -7,7 +7,6 @@ GYPHY 검색 API를 활용한 iOS GIF 이미지 검색 어플리케이션
 + CoreData 프레임워크 사용으로 즐겨찾기 목록 유지
 + Storyboard를 활용하지 않고 코드로만 UI 구성
 + Pagination 구현
-+ [개발 공수]()
 
 ## Feature
 + 이미지 검색 뷰
@@ -192,5 +191,3 @@ Realm과 비교해서 아쉬웠던 점은 별도의 NSManagedObject 객체는 �
 
 ## ScreenShot
 ![]()
-
-## Video
