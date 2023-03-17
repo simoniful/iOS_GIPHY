@@ -19,6 +19,7 @@ GYPHY 검색 API를 활용한 iOS GIF 이미지 검색 어플리케이션
 + 스크랩 뷰
   + 스크랩 목록 관리
   + 스크랩 데이터 제거
+  + Masonry layout 
 
 ## Getting Start
 > Swift, MVVM+C, CI/CD, Unit Test, CoreData, SnapKit, Alamofire, Toast-swift, RxCocoa, RxSwift, RxTest
@@ -196,7 +197,5 @@ Realm과 비교해서 아쉬웠던 점은 별도의 NSManagedObject 객체는 �
 
 
 ## ScreenShot
-<figure class="third">
-  <img src="https://user-images.githubusercontent.com/75239459/225805970-53a3534d-8e20-460c-933e-130d8615ba3a.png" width="20%">
-  <img src="https://user-images.githubusercontent.com/75239459/225806421-0a40fe38-bb67-4236-a558-3f382923ee89.png" width="20%">
-figure>
+
+<img src="https://user-images.githubusercontent.com/75239459/225807697-28ebd573-1193-4cf6-adc9-facc60f9fbe3.png" width="20%"> <img src="https://user-images.githubusercontent.com/75239459/225807755-6eec5675-66fe-4a46-97b6-ee25734e79b2.png" width="20%"> <img src="https://user-images.githubusercontent.com/75239459/225807826-2bcb15dc-e4c8-4d30-86e6-4a504969b884.png" width="20%">
