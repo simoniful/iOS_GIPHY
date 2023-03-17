@@ -196,4 +196,7 @@ Realm과 비교해서 아쉬웠던 점은 별도의 NSManagedObject 객체는 �
 
 
 ## ScreenShot
-![]()
+<figure class="third">
+  <img src="https://user-images.githubusercontent.com/75239459/225805970-53a3534d-8e20-460c-933e-130d8615ba3a.png" width="20%">
+  <img src="https://user-images.githubusercontent.com/75239459/225806421-0a40fe38-bb67-4236-a558-3f382923ee89.png" width="20%">
+figure>
