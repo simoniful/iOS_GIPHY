@@ -198,4 +198,4 @@ Realm과 비교해서 아쉬웠던 점은 별도의 NSManagedObject 객체는 �
 
 ## ScreenShot
 
-<img src="https://user-images.githubusercontent.com/75239459/225807697-28ebd573-1193-4cf6-adc9-facc60f9fbe3.png" width="20%"> <img src="https://user-images.githubusercontent.com/75239459/225807755-6eec5675-66fe-4a46-97b6-ee25734e79b2.png" width="20%"> <img src="https://user-images.githubusercontent.com/75239459/225807826-2bcb15dc-e4c8-4d30-86e6-4a504969b884.png" width="20%">
+<img src="https://user-images.githubusercontent.com/75239459/225807697-28ebd573-1193-4cf6-adc9-facc60f9fbe3.png" width="33%"> <img src="https://user-images.githubusercontent.com/75239459/225807755-6eec5675-66fe-4a46-97b6-ee25734e79b2.png" width="33%"> <img src="https://user-images.githubusercontent.com/75239459/225807826-2bcb15dc-e4c8-4d30-86e6-4a504969b884.png" width="33%">
